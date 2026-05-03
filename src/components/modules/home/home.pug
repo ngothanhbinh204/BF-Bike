@@ -1,0 +1,105 @@
+.home-banner(class="h-[400px]")
+
+.marquee(class="marquee-stopOnMouseEnter" data-axis="x" data-speed="1")
+    .marquee-viewport(class="overflow-hidden")
+        .marquee-container(class="flex -mr-5")
+            -for(let i=0;i<8;i++) 
+                .marquee-slide(class="flex-[0_0_calc(100%/4)] min-w-0 pr-5") 
+                    .item(class="h-25 bg-pink-400")
+.marquee(class="marquee-stopOnMouseEnter marquee-reverse" data-axis="x" data-speed="1")
+    .marquee-viewport(class="overflow-hidden")
+        .marquee-container(class="flex -mr-5")
+            -for(let i=0;i<8;i++) 
+                .marquee-slide(class="flex-[0_0_calc(100%/4)] min-w-0 pr-5") 
+                    .item(class="h-25 bg-pink-400")
+.container 
+    .row 
+        .col-4 
+            div(class="h-30 bg-red-400")
+        .col-8
+            div(class="h-30 bg-red-400")
+.container 
+    .bg-red-300.h-30
+.flex
+    .test-animation 
+        input(type="checkbox", name="")
+        .flex
+            .wrap-dropdown 
+                .dropdown(class="")
+                    .flex-y-center.gap-5.bg-red-500.p-3
+                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house"></i>
+    .sq-10.bg-red-200
+.paralax-wrap(class="w-20 h-20 fixed left-1/2 -translate-x-1/2 top-[300px]")
+    .icon-img(data-depth="1" class="w-full h-full bg-blue-300")
+.paralax-wrap(class="w-20 h-20 fixed left-[100px] bottom-[400px]")
+    .icon-img(data-depth="0.5" class="w-full h-full bg-blue-300")
+.paralax-wrap(class="w-20 h-20 fixed left-1/2 -translate-x-1/2 top-[200px]")
+    .icon-img(data-depth="0.5" class="w-full h-full bg-blue-300")
+.paralax-wrap(class="w-20 h-20 fixed left-1/2 -translate-x-1/2 top-[150px]")
+    .icon-img(data-depth="0.3" class="w-full h-full bg-blue-300")
+.paralax-wrap(class="w-20 h-20 fixed left-1/2 -translate-x-1/2 top-[250px]")
+    .icon-img(data-depth="1" class="w-full h-full bg-blue-300")
+.paralax-wrap(class="w-20 h-20 fixed left-[500px] bottom-[100px]")
+    .icon-img(data-depth="0.3" class="w-full h-full bg-blue-300")
+.paralax-wrap(class="w-20 h-20 fixed left-[500px] top-[100px]")
+    .icon-img(data-depth="1" class="w-full h-full bg-blue-300")
+button#btn-toast(class="px-15 py-10 rounded-full bg-pink-700 text-white text-3xl my-20") Bấm mở toast nè mày
++MenuMobile()
++BtnSlide({direction:"next"})
++BtnSlide({direction:"prev"})
+.container
+    +SwiperColumnAuto({btnPrevClass:"!text-green-400",btnNextClass:"!text-blue-400",wrapBtnSlideClass:"space-btn-slide-16"})(class="space-slide-24")
+        -for(let i=0;i<5;i++)
+            .swiper-slide 
+                .item(class="h-20 w-full bg-red-200") #{i+1}
+button(class="py-2 px-4 rounded-full bg-red-700 text-base text-white" data-popup="popup-login") bấm đi ní
+button(class="py-2 px-4 rounded-full bg-green-700 text-base text-white" data-popup="popup-register") bấm nữa đi
++WrapPopup({name:"form-login"})(id="popup-form-login" data-popup-name="popup-login" data-popup-type="filter")
+    .main-popup(class="absolute-center p-10 w-1/2 rem:h-[400px] bg-red-300")
+        button(class="absolute top-3 right-3 text-blue-700" data-popup-close) x
++WrapPopup({name:"form-register"})(id="popup-form-register" data-popup-name="popup-register")
+    .main-popup(class="absolute-center p-10 w-1/2 rem:h-[400px] bg-green-300")
+        button(class="absolute top-3 right-3 text-blue-700" data-popup-close) x
+section.section-test()
+    .container.default-container-js
+        .main-test(data-stick-to-edge="right" data-unstick-min="1200")
+            .block-stick(class="p-10 bg-pink-500") test stick to edge
+section.section-test()
+    .container.default-container-js
+        .main-test(data-stick-to-edge="left" data-unstick-min="1200")
+            .block-stick(class="p-10 bg-pink-700") test stick to edge
+h1.heading-banner test function clampVw
+.item-clampvw test sass function clampVw
+.item-test-clamp-tailwind-inline(class="clampVw:w-[100px_200px] clampVw:h-[100px_200px] clampVw:[font-size:16px_40px] bg-red-300") test clampVw 
+.compare-rem-clamVw(class="flex gap-base flex-wrap mt-base") 
+    .item-rem(class="heading-72 font-bold text-pink-500") TEST REM CLAMPVW
+    .item-clamp(class="heading-72-vw font-bold text-pink-500") TEST REM CLAMPVW
+.text(class="text-7xl") text-7xl nè 
+.text(class="text-128") text-128 nè 
+.test(class="flex gap-base")
+    .block(class="rem:sq-[300px] bg-pink-500 text-white rem:text-[72px]") 
+        span block set rem
+    .block(class="clampVw:sq-[200px_300px] bg-pink-500 text-white text-7xl") 
+        span block set clampVw
+.wrap-test(class="my-40")
+    .test-001(class="img-ratio-parallax ratio:pt-[2_4]" data-parallax data-parallax-y="10")
+        .wrap-animation(data-parallax-img)
+            +Img()
+button.button-to-top(class="fixed right-10 bottom-20 flex-center sq-10 rounded-full bg-primary-1 text-white") top
+.test-mq(class="my-30")
+    .mq-wrapper(class="flex overflow-hidden")
+        .mq-list(class="flex flex-nowrap flex-[0_0_auto]")
+            -for(let i=0;i<10;i++)
+                div(class="w-[1000%]")
+                    .mq-item(class="flex-[0_0_calc(100%/4)] pr-5")
+                        .thumb(class="img-ratio ratio:pt-[2_5]")
+                            +PugImg()
+        .mq-list(class="flex flex-nowrap flex-[0_0_auto]")
+            -for(let i=0;i<10;i++)
+                div(class="w-[1000%]")
+                    .mq-item(class="flex-[0_0_calc(100%/4)] pr-5")
+                        .thumb(class="img-ratio ratio:pt-[2_5]")
+                            +PugImg()

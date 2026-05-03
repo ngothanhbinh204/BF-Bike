@@ -1,0 +1,89 @@
+@layer components
+    form.submitting
+        button
+            @apply pointer-events-none relative
+            &::before
+                content: ''
+                animation-duration: 0.5s
+                @apply w-5 h-5 border-3 border-primary-1/40 border-t-primary-1 rounded-full inline-block
+                @apply absolute animate-spin left-full ml-3
+    // grid res
+    .grid-col-5-res
+        @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
+    .grid-col-4-res-2
+        @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+    .grid-col-4-res-1
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+    #modal
+        @apply fixed z-[999] inset-0 translate-x-full bg-black/40 opacity-0 invisible transition-300 delay-[0.3s] 
+    html.lenis-scrolling
+        iframe
+            @apply pointer-events-none
+    // hover link
+    .hover-link
+        @apply relative pb-0.5
+        &::after
+            @apply content-[''] absolute bottom-0 left-0 inline-block w-0 border-b border-transparent opacity-0 transition-300
+        &:hover::after
+            @apply w-full border-white/50 opacity-100
+    // menu mobile
+    .wrap-menu-mobile
+        @apply fixed inset-0 z-[998] 
+        @apply opacity-0 invisible transition-500 delay-[0.3s]
+        // animate-2 
+        &.animate-menu-2
+            .menu-mobile
+                @apply scale-0
+        .menu-mobile
+            @apply relative z-2 w-[68%] sm:w-[55%] h-full bg-primary-1 overflow-hidden 
+            @apply -translate-x-full transition-500 delay-0 
+            .menu-logo
+                @apply relative flex-x-center py-[16px] border-b border-utility-gray-100
+                img
+                    @apply max-h-[42px] w-auto
+                    
+            .menu-list
+                @apply px-[12px] pt-[16px]
+                &>ul
+                    @apply flex flex-col gap-y-[4px] text-white body-1
+                    &>li
+                        .title
+                            @apply flex-y-center gap-x-[20px] cursor-pointer
+                            &>a
+                                @apply block flex-1 py-[4px]
+                        &:not(.no-next)
+                            .title
+                                &::after
+                                    content: "\f105"
+                                    @apply flex-center w-[24px] h-[20px] font-awesome transition-300
+                                &.active
+                                    &::after
+                                        @apply rotate-90
+                        &>ul
+                            @apply flex flex-col gap-y-[2px] pl-[8px] pt-[4px]
+                            &>li
+                                &>a 
+                                    @apply block py-[3px]
+        .modal-menu
+            @apply content-[''] block absolute inset-0 bg-black/25 
+            @apply translate-x-full transition-500 delay-[0.5s]
+    // [data-popup-name]
+    .popup-style-action
+        @apply fixed inset-0 z-[995] flex-center px-container bg-black/35
+        @apply opacity-0 invisible transition-500
+        &.isOpen
+            @apply opacity-100 visible
+    body
+        &.isOpenMenu
+            .wrap-menu-mobile
+                @apply opacity-100 visible delay-0
+                // animate-2 
+                &.animate-menu-2
+                    .menu-mobile
+                        @apply scale-100
+                .menu-mobile
+                    @apply translate-x-0 delay-[0.5s]
+                .modal-menu
+                    @apply translate-x-0 delay-0
+
+

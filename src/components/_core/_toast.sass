@@ -1,0 +1,75 @@
+#container-toast
+    @apply fixed top-[8vh] z-[1000] left-full flex flex-col gap-4 w-full rem:max-w-[400px]
+    .toast
+        --toast-success:#22c55e
+        --toast-error: #ef4444
+        --toast-warning: #f59e0b
+        --toast-message: #3b82f6
+        @apply relative inline-flex shrink-0 gap-5 w-full pl-5 pr-7.5 py-5 rounded-3 overflow-hidden bg-white shadow-[1.5px_1.5px_6px_rgba(0,0,0,0.1)]
+        animation: toastOut 0.6s ease-in-out forwards
+        &.show
+            animation: toastIn 0.6s ease-in-out forwards
+            .toast-progress
+                animation-name: toastTimeOut
+                animation-timing-function: ease-in-out
+        &::before
+            @apply content-[''] absolute top-0 left-0 block rem:w-[6px] h-full
+        &.toast-success
+            &::before
+                @apply bg-[var(--toast-success)]
+            .toast-icon
+                @apply bg-[var(--toast-success)]
+            .toast-progress
+                @apply bg-[var(--toast-success)]
+        &.toast-error
+            &::before
+                @apply bg-[var(--toast-error)]
+            .toast-icon
+                @apply bg-[var(--toast-error)]
+            .toast-progress
+                @apply bg-[var(--toast-error)]
+        &.toast-warning
+            &::before
+                @apply bg-[var(--toast-warning)]
+            .toast-icon
+                @apply bg-[var(--toast-warning)]
+            .toast-progress
+                @apply bg-[var(--toast-warning)]
+        &.toast-message
+            &::before
+                @apply bg-[var(--toast-message)]
+            .toast-icon
+                @apply bg-[var(--toast-message)]
+            .toast-progress
+                @apply bg-[var(--toast-message)]
+        .toast-icon
+            @apply flex-center shrink-0 sq-10 rounded-full text-xl text-white
+        .toast-main-content
+            @apply text-black
+            .toast-title
+                @apply text-xl font-semibold
+            .toast-desc
+                @apply text-base mt-1.5
+        .toast-action
+            @apply absolute top-3 right-3.5 text-base font-semibold
+        .toast-progress
+            @apply absolute right-0 bottom-0 block h-1
+    @keyframes toastIn
+        0%
+            transform: translateX(0)
+            opacity: 0
+        100%
+            transform: translateX(calc((100% + (12/1920*100rem)) * -1))
+            opacity: 1
+    @keyframes toastOut
+        0%
+            transform: translateX(calc((100% + (12/1920*100rem)) * -1))
+            opacity: 1
+        100%
+            transform: translateX(0)
+            opacity: 0 
+    @keyframes toastTimeOut
+        0%
+            width: 100%
+        100%
+            width: 0%

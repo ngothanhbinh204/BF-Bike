@@ -1,0 +1,138 @@
+mixin subscribeForm()
+	.subscribe
+		.subscribefrm
+			input.subscribeemail(type="text", placeholder="Nhập email của bạn...")
+			button.subscribebutton Gửi
+mixin PugImg(url="https://picsum.photos/1600/900")
+	img(data-src=url, alt="", class=["lozad", attributes.class])
+mixin Img(url="https://picsum.photos/1600/900")
+	img(src=url class=[attributes.class] alt="")
+mixin HeaderLanguageVertical()
+	ul 
+		li.wpml-ls-item
+			a(href="") 
+				span.wpml-ls-native VN
+		ul 
+			li 
+				a(href="") 
+					span EN
+mixin HeaderLanguageHorizontal()
+	ul 
+		li.wpml-ls-item
+			a(href="") 
+				span.wpml-ls-native VN
+		li.wpml-ls-item
+			a(href="") 
+				span.wpml-ls-native VN
+mixin BtnPrimaryOption(opts={})
+	-
+		const {
+			tag="a",
+			text="Nhấn đi",
+			option="btn-primary",
+			size="size-sm",
+			appearance="appearance-default",
+			href="#!"
+		}=opts
+	#{tag}(href=tag === "a" ? href : null, class=["btn", option, size, appearance])&attributes(attributes)
+		span=text
+mixin BtnSlide(opts={})
+	- 
+		const {
+			direction="prev"
+		}=opts
+		const icon=direction==="prev"
+			? "fa-regular fa-angle-left": "fa-regular fa-angle-right"
+	button(class=["btn btn-slide"])&attributes(attributes)
+		if block 
+			block 
+		else
+			i(class=icon)
+mixin HeaderMenu()
+	nav.header-menu 
+		ul 
+			-const menu = ['Giới thiệu','Sản phẩm','Dự án', 'Dịch vụ','Thông tin','Tuyển dụng']
+			each item in menu
+				li.menu-item-has-children
+					a(href="")=item
+mixin HeaderLanguage()
+	.header-language 
+		.header-language-active
+			ul 
+				li.wpml-ls-current-language
+					a(href="") 
+						span.wpml-ls-native VN
+				ul 
+					li 
+						a(href="") 
+							span EN
+		.header-language-list
+			ul 
+				li.wpml-ls-current-language
+					a(href="") 
+						span.wpml-ls-native VN
+				ul 
+					li 
+						a(href="") 
+							span EN
+mixin HeaderLanguageAfter()
+	.header-language
+		.wpml-ls
+			ul 
+				li 
+					a(href="#!") 
+						span VN
+					ul.wpml-ls-sub-menu
+						li 
+							a(href="#!") 
+								span EN
+mixin MenuMobile()
+	.wrap-menu-mobile(class=[attributes.class])
+		.menu-mobile 
+			.menu-logo 
+				a(href="#!")
+					+PugImg("./img/logo-default.png") 
+			.menu-list
+				ul.wrap-item-toggle
+					-const arrMenu=["Về...","Dịch vụ","Sản phẩm","Trang thiết bị","Tin tức","Ưu đãi","Liên hệ"]
+					each item in arrMenu 
+						li.item-toggle
+							.title 
+								a(href="#!")=item
+							ul 
+								li 
+									a(href="#!") menu 2
+								li 
+									a(href="#!") menu 2
+								li 
+									a(href="#!") menu 2
+					li.item-toggle
+						.title 
+							a(href="#!") test
+		.modal-menu
+mixin SwiperColumnAuto(opts={})
+	-
+		const {
+			countSlide="auto-4-column",
+			spaceSlide="space-slide-default",
+			actionSlide=true,
+			optionBtnSlide="static-mobile",
+			wrapBtnSlideClass,
+			btnPrevClass,
+			btnNextClass
+		}=opts 
+	.swiper-column-auto(class=[countSlide, spaceSlide, attributes.class])&attributes(attributes)
+		.swiper 
+			.swiper-wrapper 
+				block
+		if actionSlide
+			.wrap-btn-slide(class=[optionBtnSlide, wrapBtnSlideClass])
+				+BtnSlide({direction:"prev"})(class=["btn-swiper-prev", btnPrevClass])
+				+BtnSlide({direction:"next"})(class=["btn-swiper-next", btnNextClass])
+mixin WrapPopup()
+	//- - 
+	//- 	const {
+	//- 		name="popup-form"
+	//- 	}=opts
+	div(id=attributes.id class=["popup-style-action", attributes.class])&attributes(attributes)
+		block

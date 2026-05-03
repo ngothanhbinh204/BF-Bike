@@ -1,0 +1,22 @@
+.item-clampvw
+    font-size: clampVw(16px, 20px, 768px, 1920px)
+.test-animation 
+    &:has(input:checked)
+        .wrap-dropdown
+            @apply grid-cols-[1fr]
+    .wrap-dropdown 
+        @apply grid grid-cols-[0fr] overflow-hidden
+        transition: grid-template-columns 4s ease-in-out
+        .dropdown
+            @apply overflow-hidden
+            .item
+.test-mq
+    .mq-wrapper
+        .mq-list
+            &:first-child
+                @apply bg-pink-400
+            will-change: transform
+    //         animation: animateMq 10s linear infinite
+    // @keyframes animateMq
+    //     100% 
+    //         transform: translateX(-100%)

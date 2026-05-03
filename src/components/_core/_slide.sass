@@ -1,0 +1,100 @@
+.wrap-btn-slide
+	--spaceSlide: 40px
+	@apply flex
+	// space btn 
+	&.space-btn-slide-32
+		--spaceSlide: 32px
+	&.space-btn-slide-16
+		--spaceSlide: 16px
+	&.static-mobile,&.none-static
+		.btn-swiper-prev
+			@apply xl:rem:right-[calc(100%+var(--spaceSlide))]
+		.btn-swiper-next
+			@apply xl:rem:left-[calc(100%+var(--spaceSlide))]
+	&.none-static
+		@apply mt-0
+		.btn-swiper-prev,.btn-swiper-next
+			@apply absolute top-1/2 -translate-y-1/2 z-1
+	&.static-mobile
+		@apply gap-5 xl:gap-0 mt-5 xl:mt-0
+		.btn-swiper-prev,.btn-swiper-next
+			@apply xl:absolute xl:top-1/2 xl:-translate-y-1/2 z-1
+	.btn-swiper-prev,.btn-swiper-next
+		&.swiper-button-lock
+			@apply hidden
+.btn.swiper-button-disabled
+	@apply opacity-30 cursor-not-allowed #{!important}
+.pagination-style-primary
+	@apply static mt-10 bg-neutral-100 #{!important}
+	&>*
+		@apply bg-red-500 #{!important}
+.swiper-column-auto
+	@apply relative
+	--mr: theme('spacing.mobile')
+	--spv: 1
+	&.space-slide-default
+		@screen md
+			--mr: theme('spacing.md')
+		@screen lg
+			--mr: theme('spacing.lg')
+	&.space-slide-24
+		@screen md
+			--mr: calc(24/1920*100rem)
+	&.space-slide-16
+		@screen md
+			--mr: calc(16/1920*100rem)
+	&.space-slide-8
+		@screen md
+			--mr: calc(8/1920*100rem)
+	&.space-slide-none
+		--mr: 0
+	&[data-time='0']
+		.swiper-wrapper
+			transition-timing-function: linear
+	.swiper-slide.swiper-slide
+		@apply overflow-visible
+	.swiper-slide
+		width: calc(calc(100% - calc(var(--mr) * calc(var(--spv) - 1)))/var(--spv))
+		@apply h-auto
+		&:not(:last-child)
+			margin-right: var(--mr)
+	&.auto-2-column
+		.swiper-slide
+			@screen md
+				--spv: 2
+	&.auto-3-column
+		.swiper-slide
+			@screen md
+				--spv: 2
+			@screen lg
+				--spv: 3
+		&.show-half-mobile
+			@media (max-width: 767.98px)
+				.swiper-slide
+					width: 80%
+	&.auto-4-column
+		.swiper-slide
+			--spv: 1.5
+			@screen sm
+				--spv: 2.5
+			@screen lg
+				--spv: 3.5
+			@screen xl
+				--spv: 4
+	&.auto-5-column
+		.swiper-slide
+			@screen sm
+				--spv: 2
+			@screen md
+				--spv: 3
+			@screen lg
+				--spv: 4
+			@screen xl
+				--spv: 5
+	// &.show-half-mobile
+	// 	@media (max-width: 575.98px)
+	// 		.swiper-slide
+	// 			width: 80%
+	&.allow-touchMove
+		.swiper-slide
+			@apply cursor-grab

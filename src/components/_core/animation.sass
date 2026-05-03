@@ -1,0 +1,56 @@
+.zoom-img
+    .zoom-media
+        img
+            @apply will-change-transform transition-300
+    &.tss-ease-500
+        .zoom-media
+            img
+                @apply transition-500
+    &.tss-linear-300
+        .zoom-media
+            img
+                @apply transition-all-linear-300
+    &.tss-linear-500
+        .zoom-media
+            img
+                @apply transition-all-linear-500
+    // zoom
+    --zoom: 1.05
+    &.zoom-110
+        --zoom: 1.1
+    &.zoom-115
+        --zoom: 1.15
+    &.zoom-120
+        --zoom: 1.2
+    &:hover
+        .zoom-media
+            img
+                @apply scale-[var(--zoom)]
+.ring-food
+    animation: 1.5s ring-food infinite ease-in-out alternate
+.ring-chili
+    animation: 1.5s ring-chili infinite ease-in-out alternate
+.ring-food-footer
+    animation: 1.5s ring-food-footer infinite ease-in-out alternate
+@keyframes ring-chili
+    0%
+        transform: rotate(8deg)
+    100%
+        transform: rotate(-8deg)
+@keyframes ring-food-footer
+    0%
+        transform: rotate(4deg)
+    100%
+        transform: rotate(-4deg)
+@keyframes ring-food
+    0%
+        transform: rotate(300deg)
+    100%
+        transform: rotate(330deg)
+@keyframes fade-in-down
+    0%
+        opacity: 0
+        transform: translateY(-100px)
+    100%
+        opacity: 1
+        transform: none

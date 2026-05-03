@@ -1,0 +1,20 @@
+.btn
+	@apply cursor-pointer select-none transition-500
+	&.loading
+		@apply bg-transparent #{!important}
+		span,.icon
+			@apply opacity-0
+		&::before
+			content: ''
+			animation-duration: 0.5s
+			@apply w-5 h-5 border-3 border-white/40 border-t-white rounded-full inline-block
+			@apply absolute animate-spin
+	&.btn-primary
+		// size
+		&.size-sm
+			@apply px-3 py-1
+		// appearance
+		&.appearance-default
+
+	&.btn-slide
+		@apply flex-center w-12 h-12 rounded-full bg-red-400 text-xl text-white

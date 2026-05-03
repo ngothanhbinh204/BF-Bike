@@ -1,0 +1,31 @@
+.header-search-form
+	@apply fixed top-0 left-0 flex-center w-full h-full bg-black bg-opacity-70 backdrop-blur-md z-[1000] transition-300 pointer-events-none
+	@apply opacity-0 invisible
+	&.active
+		@apply opacity-100 visible pointer-events-auto
+	.close
+		@apply flex-center absolute top-5 right-5 w-13 h-13 rounded-full bg-black/20 border border-white/15 text-2xl text-white cursor-pointer
+	.wrap-form-search-product
+		max-width: r(750px)
+		@apply flex flex-col items-center gap-y-3.5 w-full mx-auto
+		.productsearchbox
+			@apply relative flex w-full overflow-hidden rounded-4 bg-white shadow-[0_0_1px_2px_rgba(255,255,255,0.2)]
+			[class*="Module"]
+				width: 100% !important
+			&::before
+				content: "\f002" 
+				@apply font-awesome absolute left-4 top-1/2 -translate-y-1/2 text-lg text-[rgb(156,163,175)]
+			input
+				@apply flex-1 text-base pl-12 pr-4 py-5 outline-none border-none #{!important}
+			.btn-search
+				@apply flex-y-center gap-x-2 px-7 m-2 bg-primary-1 text-white rounded-4 text-base cursor-pointer transition-300
+				&:hover
+					@apply opacity-90
+				&::before
+					content: "\f002"
+					@apply font-awesome
+				// @apply flex items-center justify-center bg-primary-1 text-[0px] outline-0 border-0 border-l border-[#E0E0E0]
+		.message-search
+			@apply text-xs text-white/30 select-none
+			span
+				@apply inline-block px-1.25 py-0.25 rounded-1 border border-white/15 bg-white/10 uppercase

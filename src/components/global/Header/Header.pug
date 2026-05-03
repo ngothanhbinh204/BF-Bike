@@ -1,0 +1,11 @@
+header 
+	.container 
+		.header-child 
+			.header-logo 
+				a(href="#!")
+					+PugImg("./img/logo-header.png") 
+			+HeaderMenu()
+			.header-action
+				button.header-search 
+					<i class="fa-regular fa-magnifying-glass"></i>
+				include /components/global/Header/HeaderHambuger

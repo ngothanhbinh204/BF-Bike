@@ -1,0 +1,30 @@
+header
+	@apply fixed top-0 left-0 w-screen z-10 
+	.header-child
+		.header-language
+			.wpml-ls
+				&>ul
+					@apply flex items-center
+					&>li
+						&>a
+							@apply text-red-300
+					li:not(.wpml-ls-current-language)
+						@apply hidden
+					.wpml-ls-sub-menu
+						&>li
+							&>a	
+						li.wpml-ls-current-language
+							@apply hidden  
+		.list-menu-header
+			&>ul
+				&>li
+					&:first-child
+						a
+							@apply text-0
+							&::before
+								content: "\f015"
+								@apply font-awesome	
+		// header-menu====
+		.header-menu 
+			&>ul
+				@apply flex-y-center gap-x-2

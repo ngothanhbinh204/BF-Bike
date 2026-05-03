@@ -1,0 +1,24 @@
+@screen xl {
+  .fullpage-swiper > .swiper {
+    height: 100vh;
+  }
+  .fullpage-swiper > .swiper .section-swiper {
+    height: 100vh;
+    @apply pt-[calc(120/19.2*1rem)] bg-white;
+    @apply opacity-0;
+  }
+  .fullpage-swiper > .swiper .swiper-slide .section-swiper {
+    @apply opacity-0 transition-all duration-1000;
+  }
+  .fullpage-swiper > .swiper .swiper-slide.swiper-slide-active .section-swiper {
+    @apply opacity-100;
+  }
+}
+.fullpage-swiper > .swiper > .swiper-wrapper {
+  display: block;
+}
+@screen xl {
+  .fullpage-swiper > .swiper > .swiper-wrapper {
+    display: flex;
+  }
+}/*# sourceMappingURL=styles.css.map */
