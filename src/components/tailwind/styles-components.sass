@@ -1,89 +1,285 @@
 @layer components
-    form.submitting
-        button
-            @apply pointer-events-none relative
-            &::before
-                content: ''
-                animation-duration: 0.5s
-                @apply w-5 h-5 border-3 border-primary-1/40 border-t-primary-1 rounded-full inline-block
-                @apply absolute animate-spin left-full ml-3
-    // grid res
-    .grid-col-5-res
-        @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
-    .grid-col-4-res-2
-        @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4
-    .grid-col-4-res-1
-        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
-    #modal
-        @apply fixed z-[999] inset-0 translate-x-full bg-black/40 opacity-0 invisible transition-300 delay-[0.3s] 
-    html.lenis-scrolling
-        iframe
-            @apply pointer-events-none
-    // hover link
-    .hover-link
-        @apply relative pb-0.5
-        &::after
-            @apply content-[''] absolute bottom-0 left-0 inline-block w-0 border-b border-transparent opacity-0 transition-300
-        &:hover::after
-            @apply w-full border-white/50 opacity-100
-    // menu mobile
-    .wrap-menu-mobile
-        @apply fixed inset-0 z-[998] 
-        @apply opacity-0 invisible transition-500 delay-[0.3s]
-        // animate-2 
-        &.animate-menu-2
-            .menu-mobile
-                @apply scale-0
-        .menu-mobile
-            @apply relative z-2 w-[68%] sm:w-[55%] h-full bg-primary-1 overflow-hidden 
-            @apply -translate-x-full transition-500 delay-0 
-            .menu-logo
-                @apply relative flex-x-center py-[16px] border-b border-utility-gray-100
-                img
-                    @apply max-h-[42px] w-auto
-                    
-            .menu-list
-                @apply px-[12px] pt-[16px]
-                &>ul
-                    @apply flex flex-col gap-y-[4px] text-white body-1
-                    &>li
-                        .title
-                            @apply flex-y-center gap-x-[20px] cursor-pointer
-                            &>a
-                                @apply block flex-1 py-[4px]
-                        &:not(.no-next)
-                            .title
-                                &::after
-                                    content: "\f105"
-                                    @apply flex-center w-[24px] h-[20px] font-awesome transition-300
-                                &.active
-                                    &::after
-                                        @apply rotate-90
-                        &>ul
-                            @apply flex flex-col gap-y-[2px] pl-[8px] pt-[4px]
-                            &>li
-                                &>a 
-                                    @apply block py-[3px]
-        .modal-menu
-            @apply content-[''] block absolute inset-0 bg-black/25 
-            @apply translate-x-full transition-500 delay-[0.5s]
-    // [data-popup-name]
-    .popup-style-action
-        @apply fixed inset-0 z-[995] flex-center px-container bg-black/35
-        @apply opacity-0 invisible transition-500
-        &.isOpen
-            @apply opacity-100 visible
-    body
-        &.isOpenMenu
-            .wrap-menu-mobile
-                @apply opacity-100 visible delay-0
-                // animate-2 
-                &.animate-menu-2
-                    .menu-mobile
-                        @apply scale-100
-                .menu-mobile
-                    @apply translate-x-0 delay-[0.5s]
-                .modal-menu
-                    @apply translate-x-0 delay-0
+	form.submitting
+		button
+			@apply pointer-events-none relative
+			&::before
+				content: ''
+				animation-duration: 0.5s
+				@apply w-5 h-5 border-3 border-primary-1/40 border-t-primary-1 rounded-full inline-block
+				@apply absolute animate-spin left-full ml-3
+	// grid res
+	.grid-col-5-res
+		@apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
+	.grid-col-4-res-2
+		@apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+	.grid-col-4-res-1
+		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+	#modal
+		@apply fixed z-[999] inset-0 translate-x-full bg-black/40 opacity-0 invisible transition-300 delay-[0.3s] 
+	html.lenis-scrolling
+		iframe
+			@apply pointer-events-none
+	// hover link
+	.hover-link
+		@apply relative pb-0.5
+		&::after
+			@apply content-[''] absolute bottom-0 left-0 inline-block w-0 border-b border-transparent opacity-0 transition-300
+		&:hover::after
+			@apply w-full border-white/50 opacity-100
+	// menu mobile
+	.wrap-menu-mobile
+		@apply fixed inset-0 z-[998]
+		@apply opacity-0 invisible transition-500 delay-[0.3s]
+		.menu-mobile
+			@apply relative z-2 flex flex-col h-full
+			@apply -translate-x-full transition-500 delay-0
+			width: min(85vw, 380px)
+			background: #141416
+			// Panel header
+			.mm-header
+				@apply flex-between-center flex-shrink-0 px-5 py-4 border-b
+				border-bottom-color: rgba(255,255,255,0.08)
+			.mm-logo
+				@apply block
+				img
+					@apply w-auto
+					height: clamp(22px, calc(26/1920*100rem), 26px)
+			.mm-close
+				@apply flex-center sq-9 rounded-full text-white body-2 transition-300 cursor-pointer flex-shrink-0
+				background: rgba(255,255,255,0.08)
+				&:hover
+					@apply bg-primary-1 text-white
+			// Scrollable nav
+			.mm-body
+				@apply flex-1 overflow-y-auto py-2
+			.mm-nav
+				@apply flex flex-col
+				> li
+					@apply border-b
+					border-bottom-color: rgba(255,255,255,0.06)
+					&:last-child
+						@apply border-0
+					// Direct link (no sub-menu)
+					> a
+						@apply flex-y-center gap-x-3 w-full text-white font-gothic uppercase font-medium transition-300
+						padding: calc(13/1920*100rem) calc(20/1920*100rem)
+						font-size: clamp(13px, calc(14/1920*100rem), 14px)
+						letter-spacing: 0.06em
+						i
+							@apply text-base text-primary-1 flex-shrink-0
+						&:hover
+							@apply text-primary-1
+							background: rgba(255,255,255,0.04)
+					// Item row with toggle button
+					.mm-item
+						@apply flex-between-center
+						> a
+							@apply flex-1 text-white font-gothic uppercase font-medium transition-300
+							padding: calc(13/1920*100rem) calc(20/1920*100rem)
+							font-size: clamp(13px, calc(14/1920*100rem), 14px)
+							letter-spacing: 0.06em
+							&:hover
+								@apply text-primary-1
+					.mm-toggle
+						@apply flex-center sq-8 text-white/40 body-3 transition-300 cursor-pointer flex-shrink-0 mr-3 rounded-1
+						background: rgba(255,255,255,0.05)
+						i
+							@apply transition-300
+						&.active
+							@apply text-primary-1
+							background: rgba(215,25,32,0.12)
+							i
+								@apply rotate-180
+					// Sub-menu
+					.mm-sub
+						display: none
+						flex-direction: column
+						gap: calc(2/1920*100rem)
+						padding: calc(4/1920*100rem) calc(20/1920*100rem) calc(12/1920*100rem) calc(44/1920*100rem)
+						border-left: 2px solid rgba(215,25,32,0.35)
+						margin-left: calc(20/1920*100rem)
+						li > a
+							@apply block text-white/55 body-3 transition-300 rounded-1
+							padding: calc(6/1920*100rem) calc(8/1920*100rem)
+							&:hover
+								@apply text-white
+								background: rgba(255,255,255,0.06)
+					// Active / current states
+					&.current-menu-item,
+					&.current-menu-ancestor,
+					&.current-menu-parent
+						> a, .mm-item > a
+							@apply text-primary-1
+		// Panel footer
+		.mm-footer
+				@apply flex-between-center flex-shrink-0 px-5 py-3.5 border-t gap-x-4
+				border-top-color: rgba(255,255,255,0.08)
+				background: rgba(0,0,0,0.35)
+				// WPML language inside footer
+				.mm-footer__lang
+					.wpml-ls > ul
+						@apply flex-y-center
+					.wpml-ls > ul > li.wpml-ls-current-language
+						@apply relative
+						> a.wpml-ls-link
+							@apply flex-y-center gap-x-1.5 cursor-pointer select-none transition-300 rounded-full py-1.5 px-3
+							background: rgba(255,255,255,0.08)
+							&::after
+								content: "\f107"
+								font-family: "Font Awesome 6 Pro"
+								font-weight: 400
+								font-style: normal
+								@apply text-white/60 leading-none body-4
+							&:hover
+								@apply bg-primary-1
+								.wpml-ls-native, &::after
+									@apply text-white
+						.wpml-ls-flag
+							@apply flex-center w-5 h-5 rounded-full overflow-hidden flex-shrink-0
+							img
+								@apply block w-full h-full object-cover
+						.wpml-ls-native
+							@apply body-3 font-medium text-white
+						.wpml-ls-sub-menu
+							@apply absolute invisible opacity-0 transition-all z-10 overflow-hidden bottom-full left-0 min-w-full mb-1.5 bg-primary-2 rounded-2
+							box-shadow: 0 -4px 16px rgba(0,0,0,0.3)
+							li a.wpml-ls-link
+								@apply flex-y-center gap-x-2 text-white body-3 transition-300 whitespace-nowrap py-2 px-3.5
+								&:hover
+									background: rgba(255,255,255,0.1)
+							.wpml-ls-flag
+								@apply flex-center w-4 h-4 rounded-full overflow-hidden flex-shrink-0
+								img
+									@apply block w-full h-full object-cover
+						&:hover .wpml-ls-sub-menu
+							@apply visible opacity-100
+				.mm-footer__actions
+					@apply flex-y-center gap-x-2
+				.mm-icon
+					@apply flex-center sq-9 text-white text-lg rounded-full transition-300 relative
+					background: rgba(255,255,255,0.08)
+					i
+						@apply text-base font-normal
+					&:hover
+						@apply bg-primary-1 text-white
+				.mm-cart
+					.qty
+						@apply absolute font-gothic flex-center rounded-full bg-primary-1 text-white font-bold leading-none -top-1.5 -right-1.5 sq-5
+						font-size: clamp(10px, calc(11/1920*100rem), 11px)
+		.modal-menu
+			@apply content-[''] block absolute inset-0 bg-black/65
+			@apply translate-x-full transition-500 delay-[0.5s]
+	// [data-popup-name]
+	.popup-style-action
+		@apply fixed inset-0 z-[995] flex-center px-container bg-black/35
+		@apply opacity-0 invisible transition-500
+		&.isOpen
+			@apply opacity-100 visible
+	.border-gray-base
+		@apply border border-white/40
+		&:hover
+			@apply bg-white text-primary-1
+	.border-gray-base:not(input):hover
+		@apply bg-white text-primary-1
+	body
+		&.isOpenMenu
+			.wrap-menu-mobile
+				@apply opacity-100 visible delay-0
+				.menu-mobile
+					@apply translate-x-0 delay-[0.3s]
+				.modal-menu
+					@apply translate-x-0 delay-0
+	.section-center-cta
+		@apply flex-center mt-10
+
+	.product-item
+		@apply flex flex-col gap-5 h-full bg-white rounded-3 overflow-hidden border border-utility-gray-50 transition-300 p-5
+		&__thumb
+			@apply block bg-utility-gray-50
+			.product-item_img
+				@apply ratio:pt-[1/1] overflow-hidden
+				img
+					@apply absolute-full w-full h-full object-contain transition-300
+
+		&__brand
+			@apply flex-y-center gap-x-2 mb-3
+			img
+				@apply h-5 w-auto
+			.product-item__sku
+				@apply body-4 font-semibold uppercase
+				color: theme('colors.utility.gray-700')
+
+		&__img
+			@apply rounded-2 overflow-hidden
+			.img-ratio
+				@apply block
+				img
+					@apply absolute-full w-full h-full object-contain transition-300
+
+		&__body
+			@apply flex flex-col flex-1
+			.summary
+				@apply flex flex-col rem:space-y-[6px] mb-4
+
+		&__name
+			@apply body-20 font-bold transition-300 text-utility-gray-1515-maintext font-gothic leading-1.4
+			&:hover
+				@apply text-primary-1
+
+		&__badges
+			@apply flex-y-center gap-x-1.5
+
+		.badge-discount,
+		.badge-bestseller
+			@apply body-3 font-semibold text-white rounded px-2 rem:py-[2px] bg-utility-gray-1515-maintext font-gothic leading-1.4
+		.badge-discount
+			@apply bg-utility-gray-1515-maintext
+
+		.badge-bestseller
+			@apply bg-primary-1
+
+		&__price
+			@apply flex flex-col mb-4 space-y-1
+			.price-current
+				@apply body-20 font-semibold text-utility-gray-1515-maintext font-gothic
+
+			.price-old
+				@apply body-2 text-utility-gray-600-secondarytext
+				.price-old-vnd,
+				.price-old-usd
+					@apply line-through
+
+		&__specs
+			@apply flex flex-col gap-y-1 mt-auto pt-4 border-t border-solid border-utility-gray-200-line
+			li
+				@apply flex-y-center gap-x-2 body-2 text-utility-gray-600-secondarytext
+			i.fa-check
+				@apply text-primary-1 flex-shrink-0
+				font-size: calc(11/1920*100rem)
+		&:hover
+			@apply border-primary-1
+			.product-item__name
+				@apply text-primary-1
+			.product-item__thumb
+				img
+					@apply scale-[104%]
 
 
+	.badge-discount,
+	.badge-bestseller
+		@apply body-3 font-semibold text-white rounded px-2 rem:py-[2px] bg-utility-gray-1515-maintext font-gothic leading-1.4
+		
+	.badge-discount
+		@apply bg-utility-gray-1515-maintext
+	.badge-bestseller
+		@apply bg-primary-1
+	.border
+		border-style: solid
+
+	.heading-1,
+	.heading-2,
+	.heading-3,
+	.heading-4,
+	.heading-5,
+	.heading-6
+		@apply font-gothic text-utility-gray-1515-maintext

@@ -1,8 +1,120 @@
-footer
-    .container 
-        .footer-child 
-            .row 
-                .col-lg-3
-                .col-lg-3
-                .col-lg-3
-                .col-lg-3
+footer.footer
+	.bg-footer 
+		+PugImg("./img/bg-footer.png")
+	.footer-body
+		.container
+			//- Main 2-col row
+			.row.footer-row
+
+				//- Left column
+				.col.footer-left(class="lg:w-5/12")
+
+					//- Logo — maps to get_custom_logo()
+					.footer-logo
+						a(href="/")
+							+PugImg("./img/logo_main.svg")
+
+					//- Tagline — maps to ACF: footer_tagline
+					p.footer-tagline Thương hiệu phụ kiện xe máy điện Việt Nam
+
+					//- Partner — maps to ACF group: footer_partner { link, image }
+					.footer-partner
+						span.partner-label
+							| Liên kết với
+							br
+							| BFACTORY
+						a.partner-logo-box(href="#!" target="_blank" rel="noopener")
+							+PugImg("./img/bfactory.png")
+
+					//- Socials — maps to ACF repeater: footer_socials { icon, url, label }
+					ul.footer-socials
+						li
+							a(href="#!" aria-label="Facebook" target="_blank" rel="noopener")
+								span.icon
+									i.fa-brands.fa-facebook-f
+								span.label Facebook
+						li
+							a(href="#!" aria-label="Instagram" target="_blank" rel="noopener")
+								span.icon
+									i.fa-brands.fa-instagram
+								span.label Instagram
+						li
+							a(href="#!" aria-label="Tiktok" target="_blank" rel="noopener")
+								span.icon
+									i.fa-brands.fa-tiktok
+								span.label Tiktok
+
+				//- Right column — maps to ACF group: footer_contact
+				.col.footer-right(class="lg:w-7/12")
+
+					//- Block 1: Company info
+					.footer-info-block
+						h3.info-title Công ty TNHH B-FACTORY
+						p.info-text Số 519F, Ấp Ngũ Phúc, Phường Hố Nai, Tỉnh Đồng Nai, Việt Nam
+
+					//- Block 2: Hotline — maps to ACF repeater: footer_hotlines
+					.footer-info-block
+						h4.info-title Hotline
+						ul.info-list
+							li
+								strong Zalo:
+								|  0901 995 421
+							li
+								strong Miền Bắc:
+								|  0988 886 674
+							li
+								strong Miền Nam:
+								|  0906 323 217
+
+					//- Block 3: Hours + email — maps to ACF: footer_hours, footer_email
+					.footer-info-block
+						p.info-text
+							| Thứ 2 - 6: 09:00 - 17:30 - 
+							strong Sat - Sun:
+							| Closed
+						a.info-email(href="mailto:contact.bfbike@bfactoryvn.com") contact.bfbike@bfactoryvn.com
+
+			//- Bottom bar
+			.footer-bottom
+				//- Copyright — maps to ACF option: footer_copyright
+				p.footer-copyright © 2026 Bfactorybike. All Rights Reserved. Thiết kế web bởi Cánh Cam.
+
+				//- Terms menu — maps to wp_nav_menu({ theme_location: 'footer-terms' })
+				nav.footer-terms
+					ul
+						li
+							a(href="#!") Term of use
+						li
+							a(href="#!") Privacy
+						li
+							a(href="#!") Sitemap
+
+	//- Decorative brand text
+	.footer-brand
+		span.brand-text BFBIKE - BFBIKE
+
+
+	.tool-fixed-cta
+		.button-to-top
+			i.fa-light.fa-arrow-up
+
+		a.btn-slide.btn-phone(href="")
+			.btn-icon
+				i.fa-light.fa-phone
+			.btn-content
+				span 1900 2273 – (028) 7100 0001
+
+		.btn-slide.btn-social
+			.btn-icon
+				i.fa-light.fa-messages
+			.btn-content
+				ul
+					li
+						a(href="")
+							i.fa-light.fa-envelope
+					li
+						a(href="")
+							i.fa-brands.fa-facebook-messenger
+					li
+						a(href="")
+							i.fa-brands.fa-line

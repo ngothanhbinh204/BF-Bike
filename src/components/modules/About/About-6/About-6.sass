@@ -1,0 +1,45 @@
+.section-service-diff
+	@apply section-py overflow-hidden
+	background: theme('colors.primary.1')
+
+	.container
+		@apply section-pl
+
+	h2.section-title
+		@apply text-white text-left #{!important}
+		margin-bottom: calc(40/1920*100rem)
+
+	.service-list
+		@apply grid grid-cols-1 md:grid-cols-3 gap-5 lg:rem:gap-x-[30px]
+
+	.service-card
+		@apply bg-white rounded-3 overflow-hidden flex flex-col h-full transition-300
+		&:hover
+			@apply -translate-y-1
+			box-shadow: 0 12px 32px rgba(0,0,0,0.14)
+
+		&__head
+			@apply flex-between-center gap-x-4 p-5 border-b border-utility-gray-100
+
+		&__title
+			@apply body-1 font-medium text-utility-gray-800
+			strong
+				@apply text-primary-1 font-bold block heading-24
+
+		&__icon
+			@apply flex-shrink-0 flex-center sq-12 rounded-full text-primary-1
+			background: rgba(215,25,32,0.08)
+			i
+				@apply text-xl font-normal
+
+		&__body
+			@apply p-5 flex-1
+			p
+				@apply body-2 text-utility-gray-600-secondarytext
+			ul
+				@apply flex flex-col space-y-2 list-none
+				li
+					@apply body-2 text-utility-gray-600-secondarytext relative pl-4
+					&::before
+						content: ''
+						@apply absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-primary-1 flex-shrink-0

@@ -1,5 +1,7 @@
 .btn
-	@apply cursor-pointer select-none transition-500
+	@apply cursor-pointer select-none transition-500 body-3 font-gothic py-3.5 px-6 rounded-1 relative font-semibold tracking-[-0.56px] leading-1.4 min-w-[40px] min-h-[40px] xl:h-[48px]
+	> i
+		@apply transition-all transition-500
 	&.loading
 		@apply bg-transparent #{!important}
 		span,.icon
@@ -7,14 +9,81 @@
 		&::before
 			content: ''
 			animation-duration: 0.5s
-			@apply w-5 h-5 border-3 border-white/40 border-t-white rounded-full inline-block
+			@apply w-5 h-5 border-3 border-gray-600 border-t-gray-950 rounded-full inline-block
 			@apply absolute animate-spin
 	&.btn-primary
+		@apply bg-primary-1 text-white border border-primary-1
+		&:hover
+			@apply bg-white text-primary-1 border-primary-1
+			i
+				@apply text-primary-1
 		// size
 		&.size-sm
 			@apply px-3 py-1
-		// appearance
-		&.appearance-default
+	&.btn-primary-outline
+		@apply border border-primary-1 text-primary-1 bg-transparent gap-x-2 flex-center
+		i
+			@apply text-xl
+		&:hover
+			@apply bg-primary-1 text-white
+			i
+				@apply text-white
+		&.size-sm
+			@apply px-3 py-1
+	&.btn-white
+		@apply bg-white text-primary-1 gap-x-2 flex-center
+		i
+			@apply text-xl
+		&:hover
+			@apply bg-primary-1 text-white
+			i
+				@apply text-white
+		&.size-sm
+			@apply px-3 py-1
 
 	&.btn-slide
-		@apply flex-center w-12 h-12 rounded-full bg-red-400 text-xl text-white
+		@apply rounded-none p-0 flex-center sq-10 bg-transparent text-xl text-white border-2 border-utility-gray-200-line transition-300
+		i
+			@apply transition-all body-1 text-utility-gray-1515-maintext
+		&:hover
+			@apply bg-primary-1 border-primary-1
+			i
+				@apply text-white
+	&.btn-primary-light
+		@apply bg-primary-2 text-utility-gray-950-maintext border border-primary-2
+		&:hover
+			@apply bg-utility-gray-950-maintext text-white border-utility-gray-950-maintext
+			i
+				@apply text-white
+.btn-slide-1
+	&.btn-swiper-prev,
+	&.btn-swiper-next
+		@apply absolute top-1/2 -translate-y-1/2 z-3 bg-white
+	&.btn-swiper-prev
+		@apply -translate-x-[200%] left-0
+	&.btn-swiper-next
+		@apply translate-x-[200%] right-0
+	@screen -lg
+		&.btn-swiper-prev,
+		&.btn-swiper-next
+			@apply static translate-x-0 translate-y-0
+.btn-slide-inner
+	&.btn-swiper-prev,
+	&.btn-swiper-next
+		@apply absolute top-1/2 -translate-y-1/2 z-3 bg-white
+	&.btn-swiper-prev
+		@apply translate-x-[50%] left-0
+	&.btn-swiper-next
+		@apply -translate-x-[50%] right-0
+
+@screen -lg
+	.wrapper-controll
+		@apply flex flex-row gap-4 items-center justify-center mt-10
+		.btn-swiper-prev,
+		.btn-swiper-next
+			@apply static translate-x-0 translate-y-0
+		.btn-slide-inner
+			&.btn-swiper-prev
+				@apply absolute translate-x-[50%] left-0
+			&.btn-swiper-next
+				@apply absolute -translate-x-[50%] right-0

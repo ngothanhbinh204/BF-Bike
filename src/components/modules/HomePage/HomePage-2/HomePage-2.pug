@@ -1,0 +1,69 @@
+section.section-about
+	.container-about
+		.row
+			.about-left(class="lg:w-6/12")
+				.group-header
+					p.about-label(data-aos="fade-up") Về Thương hiệu BF Bike
+					h2.about-heading(data-ripple-text data-ripple-text-types="lines" data-ripple-text-delay="0.08")
+						strong BF BIKE
+						|  - THƯƠNG HIỆU PHỤ KIỆN XE MÁY ĐIỆN VIỆT NAM
+
+				.about-image(data-aos="fade-right" data-aos-duration="900")
+					.img-ratio(class="ratio:pt-[596_860]")
+						+PugImg()
+
+			//- Right column
+			.about-right(class="lg:w-6/12")
+
+				//- Intro text — ACF: about_intro
+				p.about-intro(data-aos="fade-up" data-aos-delay="100") Những năm gần đây, xe máy điện dần trở thành một phần quen thuộc trên đường phố Việt Nam.
+
+				//- Body paragraphs — ACF: about_content (wysiwyg)
+				.about-text(data-aos="fade-up" data-aos-delay="150")
+					p Từ học sinh, sinh viên đến văn phòng, ngày càng nhiều người lựa chọn xe điện như một cách di chuyển xanh, tiết kiệm và phù hợp với cuộc sống hiện đại.
+					p Nhưng khi thị trường xe điện phát triển nhanh chóng, một vấn đề bắt đầu lộ rõ: “Phụ kiện dành riêng cho xe máy điện vẫn còn quá ít, thiếu sự nghiên cứu và chưa thực sự phù hợp với nhu cầu sử dụng thực tế của người dùng.”
+
+				//- Stats grid — ACF repeater: about_stats { number, unit, description }
+				.about-stats(data-stagger data-stagger-delay="0.14" data-stagger-duration="0.65")
+					.stat-item(data-stagger-item)
+						p.stat-number
+							span(data-countup="12000") 12.000
+							span.stat-suffix +
+						.stat-desc
+							.dot
+							span.stat-unit m²
+							span.desc  Nhà máy sản xuất rộng
+					.stat-item(data-stagger-item)
+						p.stat-number
+							span(data-countup="150") 150
+							span.stat-suffix +
+						.stat-desc
+							.dot
+							span.stat-unit Nhân sự
+							span.desc Kinh nghiệm
+					.stat-item(data-stagger-item)
+						p.stat-number
+							span(data-countup="1000") 1000
+							span.stat-suffix +
+						.stat-desc
+							.dot
+							span.stat-unit Sản phẩm
+							span.desc Được bán ra mỗi năm
+					.stat-item(data-stagger-item)
+						p.stat-number
+							span(data-countup="200") 200
+							span.stat-suffix +
+						.stat-desc
+							.dot
+							span.stat-unit Khách hàng
+							span.desc Rải đều trên toàn quốc
+
+				//- CTA — ACF: about_cta_url, about_cta_text
+				a.btn.btn-primary-outline(href="#!" data-aos="fade-up" data-aos-delay="200")
+					span Xem thêm
+					i.fa-regular.fa-arrow-right
+				
+				.about-brand-text BFBIKE
+
+	//- Decorative vertical brand text
+	

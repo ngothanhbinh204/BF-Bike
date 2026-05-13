@@ -1,0 +1,204 @@
+// ============================================================
+// SECTION: Support — Hỗ trợ khách hàng
+// ============================================================
+
+.section-support
+	@apply section-py
+
+.support-layout
+	@apply flex gap-x-10 items-start
+	@screen -lg
+		@apply flex-col gap-y-8
+
+// ============================================================
+// Sidebar
+// ============================================================
+
+.support-sidebar
+	@apply flex-shrink-0 sticky
+	width: calc(330/1920*100rem)
+	@screen -lg
+		@apply w-full static top-auto
+
+	&__header
+		@apply px-5 py-4 rounded-t-2
+		background: theme('colors.primary.1')
+
+		h2
+			@apply font-gothic font-semibold leading-tight text-white
+			font-size: clamp(18px, calc(24/1920*100rem), calc(24/1920*100rem))
+
+.support-nav
+	@apply border border-t-0 rounded-b-2 overflow-hidden
+	border-color: theme('colors.utility.gray-200-line')
+
+	&__list
+		@apply flex flex-col
+
+	&__item
+		@apply border-b last:border-b-0
+		border-color: theme('colors.utility.gray-200-line')
+
+		&.current-menu-item .support-nav__link
+			background: theme('colors.utility.gray-50')
+
+		&.current-menu-item .support-nav__icon
+			@apply text-primary-1
+
+		&.current-menu-item .support-nav__text
+			@apply text-primary-1 font-semibold
+
+	&__link
+		@apply flex items-center gap-x-6 px-4 py-3 transition-300
+
+		&:hover
+			background: theme('colors.utility.gray-50')
+
+			.support-nav__text
+				@apply text-primary-1
+
+			.support-nav__icon
+				@apply text-primary-1
+
+	&__icon
+		@apply flex-shrink-0 flex-center sq-[32px] lg:sq-10
+		font-size: clamp(15px, calc(18/1920*100rem), calc(18/1920*100rem))
+		color: theme('colors.utility.gray-400')
+		transition: color 0.3s ease
+		img
+			@apply w-auto max-h-full h-full
+
+	&__text
+		@apply body-1 leading-snug transition-300
+		color: theme('colors.utility.gray-950-maintext')
+
+
+.support-content
+	@apply flex-1 min-w-0
+
+.support-article
+
+	&__title
+		@apply font-gothic font-bold leading-tight mb-4
+		font-size: clamp(22px, calc(36/1920*100rem), calc(36/1920*100rem))
+		color: theme('colors.utility.gray-950-maintext')
+
+	&__divider
+		@apply mb-8
+		width: calc(60/1920*100rem)
+		height: 3px
+		background: theme('colors.primary.1')
+
+	// WP: the_content() typography — bao gồm Classic Editor và Block Editor
+	&__body.entry-content
+
+		h1, h2, h3, h4, h5, h6
+			@apply font-gothic font-bold leading-tight mb-3 mt-6
+			color: theme('colors.utility.gray-950-maintext')
+
+			&:first-child
+				@apply mt-0
+
+		h1
+			font-size: clamp(20px, calc(26/1920*100rem), calc(26/1920*100rem))
+
+		h2
+			font-size: clamp(18px, calc(22/1920*100rem), calc(22/1920*100rem))
+
+		h3
+			font-size: clamp(16px, calc(20/1920*100rem), calc(20/1920*100rem))
+
+		p
+			@apply body-2 mb-4 leading-relaxed
+			color: theme('colors.utility.gray-700')
+
+			&:last-child
+				@apply mb-0
+
+		ul, ol
+			@apply mb-4 flex flex-col gap-y-2
+			padding-left: 1.25em
+
+		ul > li
+			@apply list-disc body-2
+			color: theme('colors.utility.gray-700')
+
+		ol > li
+			@apply list-decimal body-2
+			color: theme('colors.utility.gray-700')
+
+		a
+			@apply text-primary-1 underline transition-300
+
+			&:hover
+				@apply opacity-80
+
+		strong, b
+			@apply font-semibold
+			color: theme('colors.utility.gray-950-maintext')
+
+		img
+			@apply max-w-full rounded-2 my-4
+
+// ============================================================
+// FAQs Accordion
+// ============================================================
+
+.support-article--faqs
+	margin-top: calc(48/1920*100rem)
+
+.accordion-list
+	@apply flex flex-col rounded-2 overflow-hidden border
+	border-color: theme('colors.utility.gray-200-line')
+
+.accordion-item
+	@apply border-b last:border-b-0
+	border-color: theme('colors.utility.gray-200-line')
+
+.accordion-trigger
+	@apply w-full flex items-center gap-x-4 px-5 py-4 text-left cursor-pointer transition-300
+	background: theme('colors.utility.gray-50')
+	@screen -lg
+		@apply px-4 py-3
+
+	&.active
+		@apply bg-primary-1
+
+		.accordion-trigger__num
+			@apply text-white font-gothic font-semibold
+
+		.accordion-trigger__text
+			@apply text-white
+
+		.accordion-trigger__icon
+			@apply text-white
+			transform: rotate(180deg)
+
+.accordion-trigger__num
+	@apply font-gothic font-black flex-shrink-0 leading-none transition-300
+	font-size: clamp(14px, calc(16/1920*100rem), calc(16/1920*100rem))
+	color: theme('colors.utility.gray-950-maintext')
+	min-width: 1.75em
+
+.accordion-trigger__text
+	@apply flex-1 font-semibold leading-snug transition-300
+	font-size: clamp(14px, calc(16/1920*100rem), calc(16/1920*100rem))
+	color: theme('colors.utility.gray-950-maintext')
+
+.accordion-trigger__icon
+	@apply flex-shrink-0 transition-300
+	font-size: clamp(13px, calc(15/1920*100rem), calc(15/1920*100rem))
+	color: theme('colors.utility.gray-400')
+
+.accordion-content
+	background: white
+	border-top: 1px solid theme('colors.utility.gray-200-line')
+
+	&__inner
+		@apply px-5 py-4
+		@screen -lg
+			@apply px-4
+
+		p
+			@apply body-2 leading-relaxed mb-0
+			color: theme('colors.utility.gray-700')

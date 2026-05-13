@@ -1,0 +1,65 @@
+.section-about-5
+	@apply relative rem:min-h-[860px] overflow-hidden
+	&::before
+		@apply content-[''] absolute inset-0 -lg:bg-black/50 lg:bg-black/0  z-1
+		transition: all 1.5s ease
+	&::after
+		@apply content-[''] absolute-full bg-black/20
+	.wrap-padding
+		@apply section-py relative z-2 lg:rem:pt-[106px] lg:rem:pb-[97px]
+		.heading-2
+			@apply text-white
+		.block-grid
+			@apply grid grid-cols-1 lg:grid-cols-3 -lg:gap-y-[24px] lg:h-[600px] mt-10
+			.item-grid
+				@apply relative flex flex-col justify-end  h-full
+				&::after
+					@apply content-[''] absolute left-0 -bottom-[20%] block -lg:h-full border-r border-white/30 -lg:hidden
+				@screen lg
+					&:nth-child(1)::after
+						@apply h-[70%]
+					&:nth-child(2)::after
+						@apply h-[100%]
+					&:nth-child(3)::after
+						@apply h-[160%]
+				&:not(:last-child)
+					.child
+						@apply lg:pr-10
+				.child
+					@apply relative lg:pl-5
+					transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1)
+					&::before
+						@apply content-[''] absolute top-2 left-0 w-1 h-19 bg-primary-1 hidden lg:inline-block
+					.item-grid-number
+						@apply heading-60-vw text-white leading-none font-gothic
+					.item-grid-main
+						@apply relative w-full mt-5
+						.item-grid-title
+							@apply heading-24 text-white mb-2
+						.item-grid-desc
+							@apply lg:absolute lg:left-0 lg:top-full w-full text-white lg:mt-6.5 lg:opacity-0 lg:invisible
+							transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1)
+							.item-grid-desc-inner
+								@apply body-1 text-white
+
+	&:hover
+		@screen lg
+			&::before
+				@apply bg-black/50
+
+			.wrap-padding
+				.block-grid
+					.item-grid
+						.child
+							--base-tsl: 110px
+							--stagger-offset: 80px
+							transform: translateY(calc(-1 * (var(--base-tsl) + var(--height-desc))))
+						&:nth-child(2)
+							.child
+								transform: translateY(calc(-1 * (var(--base-tsl) + var(--height-desc) + var(--stagger-offset))))
+						&:nth-child(3)
+							.child
+								transform: translateY(calc(-1 * (var(--base-tsl) + var(--height-desc) + var(--stagger-offset) * 2)))
+						.item-grid-main
+							.item-grid-desc
+								@apply opacity-100 visible

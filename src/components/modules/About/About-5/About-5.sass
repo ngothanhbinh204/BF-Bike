@@ -1,0 +1,63 @@
+.section-tech
+	@apply relative overflow-hidden section-my
+	.container-full
+		@apply flex flex-col gap-y-10 lg:flex-row items-center gap-x-20 xl:rem:gap-x-[116px]
+
+	.tech-image
+		@apply relative h-full pointer-events-none rem:min-h-[596px] lg:rem:min-w-[800px] xl:rem:min-w-[860px]
+		@screen -lg
+			@apply relative h-auto ml-auto
+			width: 100%
+			max-width: 90%
+		img
+			@apply absolute-full w-full h-full object-cover
+			border-radius: calc(100/1920*100rem) 0 0 calc(100/1920*100rem)
+	
+		
+			// @screen -lg
+			// 	border-radius: calc(100/1920*100rem)
+
+	.tech-content
+		@apply w-full -md:px-container section-pl space-y-5
+		// @screen lg
+		// 	width: 51%
+
+
+	.tech-subtitle
+		@apply body-2 text-utility-gray-800
+
+	.tech-box
+		@apply rounded-2 overflow-hidden mt-10 #{!important}
+		// border: 1px solid theme('colors.utility.gray-200-line')
+
+		&__header
+			@apply bg-primary-1 text-white font-gothic font-bold px-5 py-2.5 body-20
+
+		&__body
+			@apply bg-utility-gray-50 flex flex-col
+
+		&__heading
+			@apply body-20 font-semibold p-5 text-utility-gray-800 border-b border-x-utility-gray-200-line
+		&__content
+			@apply body-2 text-utility-gray-600-secondarytext p-5 space-y-2.5 flex flex-col
+			> strong
+				@apply body-20
+
+		ul
+			@apply flex flex-col space-y-2.5 pl-5 list-none
+
+			li
+				@apply body-2 text-utility-gray-800 relative
+
+				&::before
+					content: ''
+					@apply absolute left-[-0.625rem] top-2 w-1 h-1 rounded-full bg-utility-gray-800
+
+				strong
+					@apply font-semibold
+		strong
+			@apply font-bold text-utility-gray-800
+		span
+			@apply body-20 text-primary-1
+			strong
+				@apply font-bold text-primary-1

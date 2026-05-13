@@ -1,0 +1,68 @@
+section.section-posts
+	//- Background image — ACF: section_bg_image
+	.section-bg
+		+PugImg("./img/bg-post.png")
+
+	.container
+		h2.section-title(data-ripple-text data-ripple-text-types="words" data-ripple-text-delay="0.07")
+			strong TIN TỨC
+			|  NỒI BẬT
+
+		//- Filter nav — WP: each button maps to get_terms('category')
+		nav.post-filter-nav(aria-label="Lọc bài viết" data-aos="fade-up" data-aos-delay="150")
+			button.filter-btn.is-active(data-filter="all") Tất cả
+			button.filter-btn(data-filter="tin-thi-truong") Tin thị trường
+			button.filter-btn(data-filter="su-kien") Sự kiện
+
+		.swiper-wrap(data-aos="fade-up" data-aos-delay="250" data-aos-duration="800")
+			.swiper.swiper-posts
+				.swiper-wrapper
+					.swiper-slide(data-category="tin-thi-truong")
+						+PostItem({
+							href: '#!',
+							category: 'Tin thị trường',
+							categorySlug: 'tin-thi-truong',
+							date: '03.06.2024',
+							title: 'Tấm bảo vệ pin 2 lớp B-Factory: “Lá chắn” tối ưu khi chi phí thay pin xe ô tô điện...'
+						})
+					.swiper-slide(data-category="tin-thi-truong")
+						+PostItem({
+							href: '#!',
+							category: 'Tin thị trường',
+							categorySlug: 'tin-thi-truong',
+							date: '03.06.2024',
+							title: 'Ý nghĩa các loại vật liệu cấu thành của Tấm bảo vệ pin 2 lớp B-Factory'
+						})
+					.swiper-slide(data-category="tin-thi-truong")
+						+PostItem({
+							href: '#!',
+							category: 'Tin thị trường',
+							categorySlug: 'tin-thi-truong',
+							date: '03.06.2024',
+							title: 'Giải pháp từ B-Factory giúp gạt bỏ lo lắng của chủ xe VF 5 khi giá pin tăng'
+						})
+					.swiper-slide(data-category="su-kien")
+						+PostItem({
+							href: '#!',
+							category: 'Sự kiện',
+							categorySlug: 'su-kien',
+							date: '03.06.2024',
+							title: 'Xe ô tô điện VinFast với công nghệ pin tiên tiến, an toàn và bền bỉ'
+						})
+					.swiper-slide(data-category="su-kien")
+						+PostItem({
+							href: '#!',
+							category: 'Sự kiện',
+							categorySlug: 'su-kien',
+							date: '03.06.2024',
+							title: 'BF Bike ra mắt dòng sản phẩm bảo vệ pin mới dành cho xe điện'
+						})
+
+			.wrapper-controll
+				+BtnSlide({direction: "prev"})(class="btn-swiper-prev btn-slide-1 btn-slide")
+				+BtnSlide({direction: "next"})(class="btn-swiper-next btn-slide-1 btn-slide")
+
+		.section-center-cta(data-aos="fade-up")
+			a.btn.btn-primary-outline(href="#!")
+				span Xem tất cả
+				i.fa-regular.fa-arrow-right

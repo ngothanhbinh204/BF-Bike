@@ -1,0 +1,89 @@
+section.section-products
+	.container
+		h2.section-title(data-ripple-text data-ripple-text-types="words" data-ripple-text-delay="0.07")
+			strong SẢN PHẨM
+			|  CỦA CHÚNG TÔI
+
+		.swiper-wrap(data-aos="fade-up" data-aos-delay="150" data-aos-duration="800")
+			.swiper.swiper-products
+				.swiper-wrapper
+					.swiper-slide
+						+ProductItem({
+							href: '#!',
+							logo: './img/logo-bfbike-red.png',
+							sku: 'RỒ XE EVO',
+							name: 'Rỗ xe Evo',
+							discount: '-20%',
+							isBestseller: true,
+							price: '1.250.000đ - 56$',
+							oldPrice: '1.500.000đ - 60$',
+							specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+						})
+					.swiper-slide
+						+ProductItem({
+							href: '#!',
+							logo: './img/logo-bfbike-red.png',
+							sku: 'HỖC ĐỰNG ĐỒ ĐÔI EVO',
+							name: 'Hốc đựng đồ đôi Evo',
+							discount: '-20%',
+							isBestseller: true,
+							price: '1.250.000đ - 56$',
+							oldPrice: '1.500.000đ - 60$',
+							specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+						})
+					.swiper-slide
+						+ProductItem({
+							href: '#!',
+							logo: './img/logo-bfbike-red.png',
+							sku: 'RỒ XE FELIZ',
+							name: 'Rỗ xe Feliz',
+							discount: '-20%',
+							isBestseller: true,
+							price: '1.250.000đ - 56$',
+							oldPrice: '1.500.000đ - 60$',
+							specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+						})
+					.swiper-slide
+						+ProductItem({
+							href: '#!',
+							logo: './img/logo-bfbike-red.png',
+							sku: 'HỖC ĐỰNG ĐỒ ĐÔI FELIZ',
+							name: 'Hốc đựng đồ đôi Feliz',
+							discount: '-20%',
+							isBestseller: true,
+							price: '1.250.000đ - 56$',
+							oldPrice: '1.500.000đ - 60$',
+							specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+						})
+					.swiper-slide
+						+ProductItem({
+							href: '#!',
+							logo: './img/logo-bfbike-red.png',
+							sku: 'HỖC ĐỰNG ĐỒ ĐÔI FELIZ',
+							name: 'Hốc đựng đồ đôi Feliz',
+							discount: '-20%',
+							isBestseller: true,
+							price: '1.250.000đ - 56$',
+							oldPrice: '1.500.000đ - 60$',
+							specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+						})
+					.swiper-slide
+						+ProductItem({
+							href: '#!',
+							logo: './img/logo-bfbike-red.png',
+							sku: 'HỖC ĐỰNG ĐỒ ĐÔI FELIZ',
+							name: 'Hốc đựng đồ đôi Feliz',
+							discount: '-20%',
+							isBestseller: true,
+							price: '1.250.000đ - 56$',
+							oldPrice: '1.500.000đ - 60$',
+							specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+						})
+			.wrapper-controll
+				+BtnSlide({direction: "prev"})(class="btn-swiper-prev btn-slide-1 btn-slide")
+				+BtnSlide({direction: "next"})(class="btn-swiper-next btn-slide-1 btn-slide")
+
+		.section-center-cta(data-aos="fade-up")
+			a.btn.btn-primary-outline(href="#!")
+				span Xem tất cả
+				i.fa-regular.fa-arrow-right

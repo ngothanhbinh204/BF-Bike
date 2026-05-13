@@ -7,6 +7,50 @@ mixin PugImg(url="https://picsum.photos/1600/900")
 	img(data-src=url, alt="", class=["lozad", attributes.class])
 mixin Img(url="https://picsum.photos/1600/900")
 	img(src=url class=[attributes.class] alt="")
+
+//- ProductItem mixin — maps to WooCommerce product loop item
+//- opts: { href, logo, sku, name, discount, isBestseller, price, oldPrice, specs[] }
+mixin ProductItem(opts={})
+	-
+		const {
+			href = '#!',
+			image = './img/img-product.png',
+			name = 'Rổ xe Evo',
+			discount = '-20%',
+			isBestseller = true,
+			priceVND = '1.250.000đ',
+			priceUSD = '56$',
+			oldPriceVND = '1.500.000đ',
+			oldPriceUSD = '60$',
+			specs = ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+		} = opts
+	article.product-item
+		a.product-item__thumb(href=href)
+			.product-item__img(class="img-ratio ratio:pt-[1_1]")
+				+PugImg(image)
+		.product-item__body
+			.summary
+				a.product-item__name(href=href)= name
+				.product-item__badges
+					if discount
+						span.badge-discount= discount
+					if isBestseller
+						span.badge-bestseller bestseller
+				.product-item__price
+					.span.price-current
+						span.price-current-vnd= priceVND
+						|  - 
+						span.price-current-usd= priceUSD
+					span.price-old
+						span.price-old-vnd= oldPriceVND
+						|  - 
+						span.price-old-usd= oldPriceUSD
+			if specs && specs.length
+				ul.product-item__specs
+					each spec in specs
+						li
+							i.fa-solid.fa-check
+							span= spec
 mixin HeaderLanguageVertical()
 	ul 
 		li.wpml-ls-item
@@ -88,27 +132,76 @@ mixin HeaderLanguageAfter()
 								span EN
 mixin MenuMobile()
 	.wrap-menu-mobile(class=[attributes.class])
-		.menu-mobile 
-			.menu-logo 
-				a(href="#!")
-					+PugImg("./img/logo-default.png") 
-			.menu-list
-				ul.wrap-item-toggle
-					-const arrMenu=["Về...","Dịch vụ","Sản phẩm","Trang thiết bị","Tin tức","Ưu đãi","Liên hệ"]
-					each item in arrMenu 
-						li.item-toggle
-							.title 
-								a(href="#!")=item
-							ul 
-								li 
-									a(href="#!") menu 2
-								li 
-									a(href="#!") menu 2
-								li 
-									a(href="#!") menu 2
-					li.item-toggle
-						.title 
-							a(href="#!") test
+		.menu-mobile
+			//- Panel header
+			.mm-header
+				a.mm-logo(href="#!")
+					+PugImg("./img/logo_main.svg")
+				button.mm-close(type="button" aria-label="Đóng menu")
+					i.fa-regular.fa-xmark
+
+			//- Nav items
+			.mm-body
+				ul.mm-nav
+					li.menu-item.current-menu-item
+						a(href="#!")
+							i.fa-regular.fa-house
+							span Trang chủ
+					li.menu-item.menu-item-has-children
+						.mm-item
+							a(href="#!") Giới thiệu
+							button.mm-toggle(type="button" aria-label="Mở sub menu")
+								i.fa-regular.fa-chevron-down
+						ul.mm-sub
+							li: a(href="#!") Về chúng tôi
+							li: a(href="#!") Lịch sử hình thành
+							li: a(href="#!") Đội ngũ
+					li.menu-item.menu-item-has-children
+						.mm-item
+							a(href="#!") Sản phẩm
+							button.mm-toggle(type="button" aria-label="Mở sub menu")
+								i.fa-regular.fa-chevron-down
+						ul.mm-sub
+							li: a(href="#!") Xe đạp thể thao
+							li: a(href="#!") Phụ kiện
+							li: a(href="#!") Linh kiện
+					li.menu-item.menu-item-has-children
+						.mm-item
+							a(href="#!") Hệ thống phân phối
+							button.mm-toggle(type="button" aria-label="Mở sub menu")
+								i.fa-regular.fa-chevron-down
+						ul.mm-sub
+							li: a(href="#!") Đại lý cấp 1
+							li: a(href="#!") Đại lý cấp 2
+					li.menu-item
+						a(href="#!") Tin tức
+					li.menu-item
+						a(href="#!") Hỗ trợ
+					li.menu-item
+						a(href="#!") Liên hệ
+
+			//- Panel footer
+			.mm-footer
+				.mm-footer__lang
+					.wpml-ls
+						ul
+							li.wpml-ls-item.wpml-ls-item-vi.wpml-ls-current-language
+								a.wpml-ls-link(href="#!")
+									span.wpml-ls-flag
+										+Img("./img/VI.svg")
+									span.wpml-ls-native VN
+								ul.wpml-ls-sub-menu
+									li.wpml-ls-item.wpml-ls-item-en
+										a.wpml-ls-link(href="#!")
+											span.wpml-ls-flag
+												+Img("./img/EN.svg")
+											span.wpml-ls-native EN
+				.mm-footer__actions
+					a.mm-icon(href="#!" aria-label="Tài khoản")
+						i.fa-regular.fa-user
+					a.mm-icon.mm-cart(href="#!" aria-label="Giỏ hàng")
+						i.fa-regular.fa-cart-shopping
+						span.qty 4
 		.modal-menu
 mixin SwiperColumnAuto(opts={})
 	-
@@ -136,3 +229,26 @@ mixin WrapPopup()
 	//- 	}=opts
 	div(id=attributes.id class=["popup-style-action", attributes.class])&attributes(attributes)
 		block
+//- PostItem mixin — maps to WP get_template_part('template-parts/post', 'card')
+//- WP: href→get_permalink(), image→get_the_post_thumbnail_url(), category→get_the_category()[0]->name,
+//-     categorySlug→get_the_category()[0]->slug, date→get_the_date('d.m.Y'), title→get_the_title()
+mixin PostItem(opts={})
+	-
+		const {
+			href = '#!',
+			image = 'https://picsum.photos/600/400',
+			category = 'Tin thị trường',
+			categorySlug = 'tin-thi-truong',
+			date = '03.06.2024',
+			title = 'Tiêu đề bài viết tại đây khi hiển thị trên trang chủ'
+		} = opts
+	article.post-item
+		a.post-item__thumb(href=href)
+			.img-ratio(class="ratio:pt-[230_300]")
+				+PugImg(image)
+		.post-item__body
+			.post-item__meta
+				a.post-item__cat(href=`/category/${categorySlug}`)= category
+				span.post-item__sep |
+				span.post-item__date= date
+			a.post-item__title(href=href)= title

@@ -1,0 +1,82 @@
+.section-about
+	@apply relative overflow-hidden bg-white
+
+	// ── Layout row ────────────────────────────────────────────────
+	.row
+		@apply gap-y-10
+		@screen lg
+			@apply gap-y-0 items-start
+
+	// ── Left column ───────────────────────────────────────────
+	.about-left
+		@apply flex flex-col
+		@screen lg
+			@apply rem:pr-[76px] pb-20
+
+	.group-header
+		@apply mx-10 py-15
+		@screen lg
+			@apply rem:ml-[260px] mr-0 rem:max-w-[624px] py-20 mb-7.5
+	.about-label
+		@apply text-primary-1 body-2 font-semibold mb-5
+
+	.about-heading
+		@apply font-gothic font-bold uppercase leading-1.25 text-utility-gray-950-maintext heading-40
+		strong
+			@apply text-primary-1 font-bold 
+
+	.about-image
+		@apply rounded-r-20 overflow-hidden max-w-[90%] lg:rem:max-w-[860px]
+		.img-ratio
+			@apply block
+			img
+				@apply absolute-full w-full h-full object-cover
+
+	// ── Right column ───────────────────────────────────────────
+	.about-right
+		@apply flex flex-col relative
+		@apply px-10 py-12
+		@screen lg
+			> *
+				@apply rem:max-w-[600px]
+			@apply pl-25 rem:pb-20 rem:pt-[122px] rem:pr-[260px] border-l border-utility-gray-200-line 
+
+	.about-intro
+		@apply body-1 font-bold mb-8 text-utility-gray-950-maintext
+
+	.about-text
+		@apply body-2 space-y-4 text-utility-gray-800
+
+	// ── Stats grid ────────────────────────────────────────────
+	.about-stats
+		@apply grid grid-cols-1 gap-8 rem:my-[70px]
+
+	.stat-item
+		@apply flex flex-col
+	.stat-number
+		@apply font-gothic w-full font-bold text-primary-1 leading-none mb-2 pb-2 heading-40 border-b border-utility-gray-200-line
+	.stat-desc
+		@apply flex flex-row gap-x-2 items-center
+		> *
+			@apply leading-1.4
+		.stat-unit
+			@apply body-1 text-utility-gray-950-maintext font-semibold font-gothic
+		.dot
+			@apply sq-2 rounded-full bg-utility-gray-200-line
+		.desc
+			@apply text-utility-gray-600-secondarytext body-2
+
+	// ── CTA button ────────────────────────────────────────────
+	.btn.btn-primary-outline
+		@apply flex-y-center gap-x-2 w-fit mt-2
+
+	// ── Decorative brand text ────────────────────────────
+	.about-brand-text
+		@apply absolute font-gothic font-bold uppercase select-none pointer-events-none leading-[1.15] text-gray-200 opacity-40
+		@apply vertical-rl
+		@apply block
+		top: calc(266/1920*100rem)
+		font-size: calc(140/1920*100rem)
+		right: calc(80/1920*100rem)
+		transform: rotate(180deg)
+		letter-spacing: rr(-5.6px)

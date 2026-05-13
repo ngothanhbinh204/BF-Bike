@@ -1,0 +1,47 @@
+section.section-home-banner
+	.banner-ratio(class="img-ratio ratio:pt-[960_1920]")
+
+		//- Swiper
+		.swiper
+			.swiper-wrapper
+
+				//- Slide 1 — data-title maps to ACF repeater field: banner_slides.title
+				.swiper-slide(data-title="ĐỐI TÁC TIN CẬY TRONG GIẢI PHÁP CƠ ĐIỆN")
+					+PugImg()
+					.slide-content
+						.container
+							h1.slide-title
+								| ĐỐI TÁC TIN CẬY TRONG GIẢI
+								br
+								| PHÁP CƠ ĐIỆN
+
+				//- Slide 2
+				.swiper-slide(data-title="THƯƠNG HIỆU VIỆT NAM — CHẤT LƯỢNG VƯỢT TRỘI")
+					+PugImg()
+					.slide-content
+						.container
+							h2.slide-title
+								| THƯƠNG HIỆU VIỆT NAM
+								br
+								| CHẤT LƯỢNG VƯỢT TRỘI
+
+				//- Slide 3
+				.swiper-slide(data-title="GIẢI PHÁP PHỤ KIỆN XE MÁY ĐIỆN HÀNG ĐẦU")
+					+PugImg("./img/banner-3.jpg")
+					.slide-content
+						.container
+							h2.slide-title
+								| GIẢI PHÁP PHỤ KIỆN XE MÁY
+								br
+								| ĐIỆN HÀNG ĐẦU
+
+			//- Navigation arrows — matched by swiper.js selectors
+			+BtnSlide({direction: "prev"})(class="btn-swiper-prev")
+			+BtnSlide({direction: "next"})(class="btn-swiper-next")
+
+		//- Bottom controls bar: play/pause + progress
+		.banner-controls(data-aos="fade-up" data-aos-delay="700" data-aos-duration="800")
+			button.banner-play-pause(type="button" aria-label="Tạm dừng")
+				i.fa-solid.fa-pause
+			.banner-progress-track
+				.banner-progress-fill

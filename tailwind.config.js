@@ -87,9 +87,8 @@ module.exports = {
       8: "calc(8/1920*100rem)",
     },
     fontFamily: {
-      primary: ["Montserrat", "sans-serif"],
-      "inter-tight": "Inter Tight",
-      goldman: ["Goldman", "sans-serif"],
+      primary: ["Google Sans Flex", "sans-serif"],
+	  gothic: ['"Science Gothic"', "sans-serif"],
       awesome: ['"Font Awesome 6 Pro"'],
       awesomeSharp: ['"Font Awesome 6 Sharp"'],
     },
@@ -249,10 +248,11 @@ module.exports = {
       8: "calc(8/1920*100rem)",
     },
     extend: {
+		
       colors: {
         transparent: "transparent",
         primary: {
-          1: "#8d3132",
+          1: "#D71920",
           2: "#5f6062",
           3: "#bbbdc0",
           4: "#e6e7e8",
@@ -264,7 +264,7 @@ module.exports = {
         },
         utility: {
           white: "#ffffff",
-          "gray-50": "#f6f6f6",
+          "gray-50": "#F1F3F4",
           "gray-100": "#efefef",
           "gray-200-line": "#dcdcdc",
           "gray-300": "#bdbdbd",
@@ -274,7 +274,8 @@ module.exports = {
           "gray-700": "#525252",
           "gray-800": "#464646",
           "gray-900": "#3d3d3d",
-          "gray-950-maintext": "#333333",
+          "gray-950-maintext": "#292929",
+		  "gray-1515-maintext": "#151515",
           black: "#000000",
           "error-1": "#e30e00",
           "error-2": "#e30e00",
@@ -526,6 +527,35 @@ module.exports = {
           lineHeight: "1.15",
           fontWeight: "700",
         },
+		 ".heading-60-vw": {
+          fontSize: clampVw(42, 60),
+          lineHeight: "1.2",
+          fontWeight: "700",
+        },
+		".heading-40": {
+		//   fontSize: "32px",
+		//   [`@media (min-width: ${theme("screens.lg")})`]: {
+		// 	fontSize: "calc(40/1920*100rem)",
+		//   },
+		  fontSize: clampVw(22, 40),
+		  lineHeight: "1.25",
+		  fontWeight: "700",
+		},
+		".heading-24": {
+		   fontSize: clampVw(20, 24),
+		  lineHeight: "1.25",
+		  fontWeight: "700",
+		},
+    ".heading-30": {
+		   fontSize: clampVw(22, 30),
+		  lineHeight: "1.3",
+		  fontWeight: "700",
+		},
+		".heading-36": {
+		   fontSize: clampVw(32, 36),
+		  lineHeight: "1.25",
+		  fontWeight: "700",
+		},
         ".heading-banner": {
           // fontSize: "52px",
           // [`@media (min-width: ${theme("screens.lg")})`]: {
@@ -587,10 +617,12 @@ module.exports = {
         // text-body
         ".body-1": {
           fontSize: "calc(18/1920*100rem)",
+		  fontSize: "clamp(16px,calc(18/1920*100rem),calc(18/1920*100rem))",
           lineHeight: "1.4",
         },
         ".body-2": {
-          fontSize: "calc(16/1920*100rem)",
+        //   fontSize: "calc(16/1920*100rem)",
+		  fontSize: "clamp(14px,calc(16/1920*100rem),calc(16/1920*100rem))",
           lineHeight: "1.4",
         },
         ".body-3": {
@@ -602,18 +634,24 @@ module.exports = {
           lineHeight: "1.4",
         },
         ".body-5": {
-          fontSize: "calc(20/1920*100rem)",
+          fontSize: "clamp(18px,calc(20/1920*100rem),calc(20/1920*100rem))",
           lineHeight: "1.4",
         },
         ".body-14": {
-          "font-size": "calc(14/1920*100rem)",
+          fontSize: "calc(14/1920*100rem)",
+          lineHeight: "1.4",
         },
         ".body-16": {
-          "font-size": "calc(16/1920*100rem)",
+          fontSize: "calc(16/1920*100rem)",
+          lineHeight: "1.4",
         },
         ".body-18": {
           "font-size": "calc(18/1920*100rem)",
         },
+		".body-20": {
+		  fontSize: "clamp(18px,calc(20/1920*100rem),calc(20/1920*100rem))",
+		  lineHeight: "1.4",
+		},
         ".absolute-y-center": {
           position: "absolute",
           top: "50%",
@@ -736,6 +774,27 @@ module.exports = {
             paddingBottom: "calc(80/1920*100rem)",
           },
         },
+		".section-my": {
+			marginTop: "calc(40/1920*100rem)",
+			marginBottom: "calc(40/1920*100rem)",
+			"@screen lg": {
+				marginTop: "calc(60/1920*100rem)",
+				marginBottom: "calc(60/1920*100rem)",
+			},
+			"@screen xl": {
+				marginTop: "calc(80/1920*100rem)",
+				marginBottom: "calc(80/1920*100rem)",
+			},
+		},
+		".section-pl": {
+			paddingLeft: "calc(24/1920*100rem)",
+			"@screen lg": {
+				paddingLeft: "calc(200/1920*100rem)",
+			},
+			"@screen xl": {
+				paddingLeft: "calc(260/1920*100rem)",
+			},
+		},
         ".section-pt": {
           paddingTop: "calc(40/1920*100rem)",
           "@screen lg": {
@@ -754,6 +813,126 @@ module.exports = {
             paddingBottom: "calc(80/1920*100rem)",
           },
         },
+		'.section-xl-py': {
+					paddingTop: 'theme(spacing.mobile)',
+					paddingBottom: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						paddingTop: 'theme(spacing.md)',
+						paddingBottom: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						paddingTop: 'calc(80/1920*100rem)',
+						paddingBottom: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-px': {
+					paddingLeft: 'theme(spacing.mobile)',
+					paddingRight: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						paddingLeft: 'theme(spacing.md)',
+						paddingRight: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						paddingLeft: 'calc(80/1920*100rem)',
+						paddingRight: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-pl': {
+					paddingLeft: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						paddingLeft: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						paddingLeft: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-pr': {
+					paddingRight: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						paddingRight: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						paddingRight: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-pt': {
+					paddingTop: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						paddingTop: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						paddingTop: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-pb': {
+					paddingBottom: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						paddingBottom: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						paddingBottom: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-my': {
+					marginTop: 'theme(spacing.mobile)',
+					marginBottom: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						marginTop: 'theme(spacing.md)',
+						marginBottom: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						marginTop: 'calc(80/1920*100rem)',
+						marginBottom: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-mt': {
+					marginTop: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						marginTop: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						marginTop: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-mb': {
+					marginBottom: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						marginBottom: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						marginBottom: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-mx': {
+					marginLeft: 'theme(spacing.mobile)',
+					marginRight: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						marginLeft: 'theme(spacing.md)',
+						marginRight: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						marginLeft: 'calc(80/1920*100rem)',
+						marginRight: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-ml': {
+					marginLeft: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						marginLeft: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						marginLeft: 'calc(80/1920*100rem)',
+					},
+				},
+				'.section-xl-mr': {
+					marginRight: 'theme(spacing.mobile)',
+					[`@media (min-width: ${theme('screens.md')})`]: {
+						marginRight: 'theme(spacing.md)',
+					},
+					[`@media (min-width: ${theme('screens.lg')})`]: {
+						marginRight: 'calc(80/1920*100rem)',
+					},
+				},
         ".transition-all": {
           transition: "all 200ms ease",
         },

@@ -1,11 +1,65 @@
-header 
-	.container 
-		.header-child 
-			.header-logo 
+header
+	.container-header
+		.header-child
+			//- Logo
+			.header-logo
 				a(href="#!")
-					+PugImg("./img/logo-header.png") 
-			+HeaderMenu()
-			.header-action
-				button.header-search 
-					<i class="fa-regular fa-magnifying-glass"></i>
-				include /components/global/Header/HeaderHambuger
+					+PugImg("./img/logo_main.svg")
+
+			//- Navigation — maps to wp_nav_menu()
+			nav.header-menu
+				ul
+					li.menu-item.current-menu-item
+						a(href="#!")
+							i.fa-regular.fa-house
+					li.menu-item.menu-item-has-children
+						a(href="#!") Giới thiệu
+					li.menu-item.menu-item-has-children
+						a(href="#!") Sản phẩm
+					li.menu-item.menu-item-has-children
+						a(href="#!") Hệ thống phân phối
+					li.menu-item
+						a(href="#!") Tin tức
+					li.menu-item
+						a(href="#!") Hỗ trợ
+					li.menu-item
+						a(href="#!") Liên hệ
+
+			//- Right group
+			.header-right
+				//- Inline search — maps to get_search_form()
+				.header-search-box
+					input(type="text" placeholder="Tìm kiếm...")
+					button(type="button" aria-label="Tìm kiếm")
+						i.fa-regular.fa-magnifying-glass
+
+				//- Action icons
+				.header-action
+					//- Language — maps to WPML language switcher shortcode
+					.header-language
+						.wpml-ls
+							ul
+								li.wpml-ls-item.wpml-ls-item-vi.wpml-ls-current-language
+									a.wpml-ls-link(href="#!")
+										span.wpml-ls-flag
+											+Img("./img/VI.svg")
+										span.wpml-ls-native VN
+									ul.wpml-ls-sub-menu
+										li.wpml-ls-item.wpml-ls-item-en
+											a.wpml-ls-link(href="#!")
+												span.wpml-ls-flag
+													+Img("./img/EN.svg")
+												span.wpml-ls-native EN
+
+					//- Account — maps to wp_loginout() or WooCommerce account
+					a.header-account(href="#!" aria-label="Tài khoản")
+						i.fa-regular.fa-user
+
+					//- Cart — maps to WooCommerce mini cart
+					a.header-cart(href="#!" aria-label="Giỏ hàng")
+						i.fa-regular.fa-cart-shopping
+						span.qty 4
+
+					//- Mobile toggle
+					include /components/global/Header/HeaderHambuger
++MenuMobile()

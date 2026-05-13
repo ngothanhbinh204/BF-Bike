@@ -1,0 +1,29 @@
+.section-video-banner
+	@apply section-py
+	.container-inner
+		@apply section-py lg:rem:py-[85px] bg-black w-full h-full
+		border-radius: rr(20px)
+
+	.video-box
+		@apply relative overflow-hidden cursor-pointer
+		border-radius: rr(20px)
+
+		video
+			@apply absolute top-0 left-0 w-full h-full object-cover
+
+		.video-overlay
+			@apply absolute top-0 left-0 w-full h-full transition-500
+			background: rgba(0, 0, 0, 0)
+
+		.video-content
+			@apply absolute top-0 left-0 w-full h-full flex-center flex-col gap-y-8
+			@apply opacity-0 transition-500
+
+		&:hover
+			.video-overlay
+				background: rgba(0, 0, 0, 0.55)
+			.video-content
+				@apply opacity-100
+
+	.video-title
+		@apply font-gothic font-bold uppercase text-white text-center heading-40

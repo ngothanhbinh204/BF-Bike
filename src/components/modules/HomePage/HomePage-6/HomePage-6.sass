@@ -1,0 +1,51 @@
+.section-help
+	@apply section-py
+	background: linear-gradient(90deg, #EC1F27 0%, #9C1C21 100%)
+	h2.section-title
+		@apply text-white mb-10
+		strong
+			@apply text-white
+
+	.help-list
+		@apply flex flex-wrap gap-5
+		@screen -lg
+			@apply grid grid-cols-2
+		@screen -md
+			@apply grid-cols-1
+
+	.help-item
+		@apply flex flex-col flex-1 bg-white rounded-1 p-6 transition-300 gap-4 border border-primary-1
+		min-width: calc(25% - rr(15px))
+		@screen -xl
+			@apply w-full
+			min-width: calc(50% - rr(10px))
+		@screen -lg
+			@apply flex-none w-full
+			min-width: calc(25% - rr(10px))
+		@screen -md
+			min-width: 100%
+		
+
+		&__top
+			@apply flex justify-between items-start gap-3
+
+		&__title
+			@apply font-gothic font-bold body-20 text-utility-gray-1515-maintext transition-300
+			strong
+				@apply text-primary-1 font-semibold
+
+		&__icon
+			@apply flex-shrink-0
+			width: rr(48px)
+			height: rr(67px)
+			min-width: rr(40px)
+			min-height: rr(40px)
+
+		&__desc
+			@apply body-2 text-utility-gray-600-secondarytext
+			ul
+				@apply list-disc pl-5 flex flex-col gap-2
+		&:hover
+			@apply border-white
+			.help-item__title
+				@apply text-primary-1

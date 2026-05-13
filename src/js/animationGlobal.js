@@ -145,11 +145,44 @@ const animation = {
       );
     });
   },
+  //   stagger reveal — trigger: [data-stagger], items: [data-stagger-item]
+  staggerReveal: function () {
+    const $groups = $("[data-stagger]");
+    $groups.each(function () {
+      const $group = $(this);
+      const $items = $group.find("[data-stagger-item]");
+      if (!$items.length) return;
+      const delay = parseFloat($group.attr("data-stagger-delay")) || 0.12;
+      const dur   = parseFloat($group.attr("data-stagger-duration")) || 0.7;
+      const dir   = $group.attr("data-stagger-dir") || "bottom";
+      const yVal  = dir === "bottom" ? 48 : 0;
+      const xVal  = dir === "left" ? -48 : dir === "right" ? 48 : 0;
+      gsap.fromTo(
+        $items.toArray(),
+        { opacity: 0, y: yVal, x: xVal },
+        {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          duration: dur,
+          ease: "power2.out",
+          stagger: { each: delay },
+          scrollTrigger: {
+            trigger: $group[0],
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  },
+
   //   init
   init: function () {
     this.parallaxImgScroll();
     this.buttonToTop();
     this.scrollTextRipper();
+    this.staggerReveal();
   },
 };
 

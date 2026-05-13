@@ -19,6 +19,27 @@ const header = {
       $(this).toggleClass("active");
       $("body").toggleClass("isOpenMenu");
     });
+    // Close button inside mobile panel
+    $(".mm-close").on("click", function () {
+      $("body").removeClass("isOpenMenu");
+      $(".header-hamburger").removeClass("active");
+    });
+    // Sub-menu accordion
+    $(".mm-toggle").on("click", function () {
+      var $toggle = $(this);
+      var $sub = $toggle.closest("li").find(".mm-sub").first();
+      var isActive = $toggle.hasClass("active");
+      // collapse all others
+      $(".mm-toggle.active").not($toggle).removeClass("active");
+      $(".mm-nav .mm-sub").not($sub).slideUp(250);
+      // toggle current
+      $toggle.toggleClass("active", !isActive);
+      if (isActive) {
+        $sub.slideUp(250);
+      } else {
+        $sub.slideDown(250);
+      }
+    });
   },
   initVariable: function () {
     const height = $("header").height();

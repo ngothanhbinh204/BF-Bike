@@ -1,0 +1,93 @@
+.section-posts
+	@apply relative section-py overflow-hidden
+
+	.section-bg
+		@apply absolute top-0 left-0 w-full h-full pointer-events-none
+		img
+			@apply absolute-full w-full h-full object-cover
+
+	.container
+		@apply relative z-1
+
+	h2.section-title
+		@apply mb-8
+
+	.post-filter-nav
+		@apply flex-center gap-x-3 mb-10 flex-wrap gap-y-2
+
+	.filter-btn
+		@apply cursor-pointer select-none transition-300
+		@apply body-3 font-semibold rounded-full px-5 py-2
+		@apply bg-white text-primary-2 border border-utility-gray-200-line
+		&:hover,
+		&.is-active
+			@apply bg-primary-1 text-white border-primary-1
+
+	.swiper-wrap
+		@apply relative
+		// @apply px-10
+		// @screen lg
+		// 	@apply px-12
+
+	// .swiper-posts
+	// 	@apply overflow-visible
+
+	.swiper-slide
+		height: auto
+
+	// .btn-swiper-prev,
+	// .btn-swiper-next
+	// 	@apply absolute top-1/2 -translate-y-1/2 z-3 flex-center rounded-full transition-300
+	// 	@apply bg-white text-primary-2 border border-utility-gray-200-line
+	// 	@apply w-9 h-9 text-base
+	// 	@screen lg
+	// 		@apply w-11 h-11 text-lg
+	// 	&:hover
+	// 		@apply bg-primary-1 text-white border-primary-1
+
+	// .btn-swiper-prev
+	// 	@apply left-0
+
+	// .btn-swiper-next
+	// 	@apply right-0
+
+	// .section-posts__cta
+	// 	@apply flex-center mt-10
+	// 	.btn
+	// 		@apply flex-y-center gap-x-2
+
+
+.post-item
+	@apply flex flex-col h-full overflow-hidden
+
+	&__thumb
+		@apply block overflow-hidden
+		border-radius: rr(20px)
+		.img-ratio
+			img
+				@apply absolute-full w-full h-full object-cover transition-500
+		&:hover img
+			@apply scale-105
+
+	&__body
+		@apply flex flex-col py-5 flex-1 gap-y-2
+
+	&__meta
+		@apply border-solid
+		@apply flex-y-center gap-x-1.5 body-3 font-normal border-b border-utility-gray-200-line pb-3 mb-3
+
+	&__cat
+		@apply font-semibold text-primary-1 transition-300 font-gothic
+		&:hover
+			@apply underline
+
+	&__sep
+		@apply text-utility-gray-400 body-4
+	&__date
+		@apply text-utility-gray-600-secondarytext
+
+	&__title
+		@apply body-1 font-semibold transition-300 text-utility-gray-950-maintext line-clamp-3 font-gothic
+		&:hover
+			@apply text-primary-1
+	

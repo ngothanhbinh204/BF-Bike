@@ -360,12 +360,18 @@ const helper = {
     let instants = [];
     countUpElements2.each(function () {
       const $this = $(this);
-      const targetNumber = $this.data("countup");
-      const is_decimal = targetNumber?.includes(".");
+    //   const targetNumber = $this.data("countup");
+	  const targetNumber = parseFloat(
+	String($this.data("countup")).replace(/,/g, "")
+	);
+      const is_decimal = String(targetNumber).includes(".");
       const instant = new CountUp($this[0], targetNumber, {
         duration: 4,
-        separator: ".",
-        decimal: ",",
+		useGrouping: false,
+        // separator: ".",
+        // decimal: ",",
+		separator: "",
+        decimal: ".",
         enableScrollSpy: true,
         decimalPlaces: is_decimal ? 2 : 0,
       });
@@ -454,6 +460,51 @@ const helper = {
       });
     });
   },
+
+  setHeightEl: function () {
+	const $targets = $('[data-height-options]');
+
+	if (!$targets.length) return;
+
+	const calculate = () => {
+		$targets.each(function () {
+			const $this = $(this);
+			let options = {};
+			try { options = JSON.parse($this.attr('data-height-options') || '{}'); } catch(e) { return; }
+			const varName = options.var || '--height-el';
+
+			let $source;
+
+			// Xác định nguồn tính chiều cao
+			if (options.source === 'child') {
+				// Tìm phần tử có data-height-child bên trong
+				$source = $this.find('[data-height-child]');
+			} else if (options.source === 'layout' || options.source === 'parent') {
+				// Tìm thẻ cha có data-height-layout
+				$source = $this.closest('[data-height-layout]');
+			} else if (options.source && options.source !== 'self') {
+				// Selector cụ thể
+				$source = $(options.source);
+			} else {
+				// Mặc định là chính nó
+				$source = $this;
+			}
+
+			if ($source && $source.length) {
+				let maxHeight = 0;
+				$source.each(function () {
+					const h = $(this).outerHeight() || 0;
+					if (h > maxHeight) maxHeight = h;
+				});
+				$this.css(varName, `${maxHeight}px`);
+			}
+		});
+	};
+
+	calculate();
+	$(window).on('resize load', calculate);
+	return calculate;
+	},
   //--
   // init
   init: function () {
@@ -462,6 +513,7 @@ const helper = {
     this.toggleItem();
     this.stickElementToEdge();
     this.menuSpy();
+	this.setHeightEl();
   },
 };
 

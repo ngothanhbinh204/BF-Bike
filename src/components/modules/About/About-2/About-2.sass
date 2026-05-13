@@ -1,0 +1,32 @@
+.section-vision
+	@apply bg-utility-gray-50 section-py
+
+	.container
+		@apply max-w-full pr-0 flex-1
+		@apply section-pl
+	.group-title
+		@apply flex items-center gap-x-3 mb-10
+		@apply gap-10 lg:gap-18
+
+		
+	h2.section-title
+		@apply text-left #{!important}
+
+	.vision-divider
+		@apply bg-utility-gray-300 h-[1px] flex-grow
+
+	.vision-quote
+		@apply flex gap-x-4 items-start rem:max-w-[1400px] -lg:pr-6
+		@screen lg
+			@apply gap-x-6
+
+		&__icon
+			@apply flex-shrink-0
+			width: calc(65/1920*100rem)
+			height: calc(65/1920*100rem)
+			min-width: 40px
+			min-height: 40px
+
+		&__text
+			@apply body-20 lg:rem:text-[30px] text-utility-gray-1515-maintext
+			padding-top: calc(6/1920*100rem)

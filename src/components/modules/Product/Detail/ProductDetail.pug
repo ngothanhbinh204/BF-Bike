@@ -1,0 +1,143 @@
+//- ============================================================
+//- SECTION: TÓM TẮT SẢN PHẨM
+//- WC: single-product template — .product, .type-product
+//- ============================================================
+
+section.section-product-detail
+	.container
+		.product-detail-layout
+
+			//- ─── LEFT: Gallery ─────────────────────────────────────────────
+			//- WC: woocommerce_show_product_images() → .woocommerce-product-gallery
+			.product-gallery.woocommerce-product-gallery
+
+				//- Top area: thumbs + main slider side by side
+				.product-gallery__top
+
+					//- Thumbnail strip (vertical swiper)
+					//- WC: woocommerce_product_thumbnails() → each get_post_thumbnail_id()
+					.product-gallery__thumbs.swiper(data-gallery-thumbs)
+						.swiper-wrapper
+							each thumb in [1,2,3,4,5,6,7,8,9]
+								.swiper-slide
+									.product-thumb
+										.img-ratio(class="ratio:pt-[1_1]")
+											+PugImg('./img/img-product.png')
+
+					//- Main swiper — WC: woocommerce-product-gallery__image
+					.product-gallery__slider-frame
+						.product-gallery__slider.swiper(data-gallery-main)
+							.swiper-wrapper
+								each slide in [1,2,3,4,5,6,7,8,9]
+									.swiper-slide
+										a.gallery-slide-link(href='./img/img-product.png' data-fancybox="product-gallery" aria-label="Xem ảnh lớn")
+											.img-ratio(class="ratio:pt-[1_1]")
+												+PugImg('./img/img-product.png')
+							.wrapper-controll
+								+BtnSlide({direction: "prev"})(class="btn-swiper-prev btn-product-prev btn-slide-inner btn-slide")
+								+BtnSlide({direction: "next"})(class="btn-swiper-next btn-product-next btn-slide-inner btn-slide")
+
+			//- ─── RIGHT: Product Info ───────────────────────────────────────
+			//- WC: .entry-summary — woocommerce_template_single_* hooks fire here
+			.product-detail-info.entry-summary
+
+				//- WC: the_title() via woocommerce_single_product_summary → product_title
+				h1.product_title.entry-title HỐC ĐỰNG ĐỒ ĐÔI BF BIKE DÀNH CHO CÁC DÒNG XE EVO
+
+				//- Badges — WC: is_on_sale() badge + ACF: is_bestseller (true/false)
+				.product-detail-badges
+					span.badge-discount -20%
+					span.badge-bestseller bestseller
+
+				//- WC: woocommerce_get_price_html() → .price
+				.product-detail-price.price
+					.price-current
+						span.price-current-vnd 1.250.000đ
+						|  -&#32;
+						span.price-current-usd 56$
+					del.price-old
+						span.price-old-vnd 1.500.000đ
+						|  -&#32;
+						span.price-old-usd 60$
+				.divider
+				//- WC: the_excerpt() → .woocommerce-product-details__short-description
+				.product-detail-desc.woocommerce-product-details__short-description
+					p Xuất phát từ vấn đề thực tế: Thiết kế nguyên bản của xe không đáp ứng đủ nhu cầu hằng ngày, người sử dụng thiếu không gian để vật dụng, ảnh hưởng đến trải nghiệm khi vận hành xe.
+					p Hiểu được điều này, BF Bike đã nghiên cứu và sản xuất những dòng phụ kiện giúp tăng tính tiện lợi, độ bền, thẩm mỹ và an toàn cho người dùng như Hốc đựng đồ đôi, rỗ xe,... dành cho các dòng xe máy điện trên thị trường.
+
+				//- ACF: product_advantages (repeater → advantage_text)
+				.product-advantages
+					.product-advantages__header Ưu điểm
+					.product-advantages__body
+						ul
+							li Nhựa PP cứng cấp
+							li Sơn đen thẩm mỹ, hài hòa với màu của xe
+							li Lắp đặt đơn giản, nhanh gọn
+
+				//- WC: form.cart (woocommerce_template_single_add_to_cart hook)
+				form.cart.product-actions(method="post")
+					//- WC: single_add_to_cart_button
+					button.btn.btn-primary-outline.btn-add-to-cart.add_to_cart_button(type="submit" name="add-to-cart" value="0")
+						span Thêm vào giỏ hàng
+						i.fa-regular.fa-cart-shopping
+					a.btn.btn-primary.btn-buy-now(href="#!")
+						span Mua ngay
+						i.fa-regular.fa-arrow-right
+
+//- ============================================================
+//- SECTION: VIDEO HƯỚNG DẪN LẮP ĐẶT
+//- ACF: product_installation_videos (repeater → video_thumb, video_url)
+//- ============================================================
+
+section.section-video-guide
+	.container
+		h2.section-title.h30
+			strong VIDEO
+			|  HƯỚNG DẪN LẮP ĐẶT
+	.video-guide-outer
+		.swiper.swiper-video-guide
+			.swiper-wrapper
+				//- ACF: foreach product_installation_videos → video_url, video_thumb
+				.swiper-slide
+					a.video-guide-item(href="https://www.youtube.com/watch?v=example1" data-fancybox="video-guide" data-type="iframe")
+						.img-ratio(class="ratio:pt-[600_1170]")
+							+PugImg('./img/img-product.png')
+				.swiper-slide
+					a.video-guide-item(href="https://www.youtube.com/watch?v=example2" data-fancybox="video-guide" data-type="iframe")
+						.img-ratio(class="ratio:pt-[600_1170]")
+							+PugImg('./img/img-product.png')
+		.wrapper-controll
+			+BtnSlide({direction: "prev"})(class="btn-swiper-prev btn-video-prev btn-slide-1 btn-slide")
+			+BtnSlide({direction: "next"})(class="btn-swiper-next btn-video-next btn-slide-1 btn-slide")
+
+//- ============================================================
+//- SECTION: SẢN PHẨM LIÊN QUAN
+//- WC: related_products() → woocommerce_output_related_products()
+//- WC: .related.products (default WC class kept for hook compatibility)
+//- ============================================================
+
+section.section-related-products.related.products
+	.container
+		h2.section-title.h30
+			strong SẢN PHẨM
+			|  LIÊN QUAN
+		.related-products-wrap
+			.swiper.swiper-related
+				.swiper-wrapper
+					//- WC: foreach woocommerce_related_products($product_id) as $product
+					each productName in ['Hốc đựng đồ đôi Evo', 'Rỗ xe Feliz', 'Hốc đựng đồ đôi Feliz', 'Hốc đựng đồ đôi Feliz']
+						.swiper-slide
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: productName,
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+			+BtnSlide({direction: 'prev'})(class="btn-related-prev")
+			+BtnSlide({direction: 'next'})(class="btn-related-next")

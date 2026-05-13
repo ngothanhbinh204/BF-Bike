@@ -1,0 +1,66 @@
+.tool-fixed-cta
+	@apply fixed bottom-8 right-5 z-50 flex flex-col gap-3 items-end
+
+	.button-to-top
+		@apply flex items-center justify-center w-13 h-13 rounded-full bg-white cursor-pointer flex-shrink-0
+		box-shadow: 0 4px 20px rgba(0,0,0,0.3)
+		transition: transform 0.25s ease, box-shadow 0.25s ease
+		i
+			@apply text-lg text-[#1a1a1a]
+			font-weight: 300
+		&:hover
+			@apply -translate-y-1
+			box-shadow: 0 8px 28px rgba(0,0,0,0.4)
+
+	.btn-slide
+		@apply flex items-center h-13 rounded-full overflow-hidden cursor-pointer no-underline
+		max-width: 52px
+		transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+		&:hover
+			max-width: 400px
+			.btn-content
+				@apply opacity-100
+				transform: translateX(0)
+		&.btn-phone
+			@apply bg-[#CC1719]
+		&.btn-social
+			@apply bg-[#636363]
+
+	.btn-icon
+		@apply flex items-center justify-center w-13 h-13 flex-shrink-0
+		i
+			@apply text-white text-xl
+			font-weight: 300
+			animation: ring 2s ease-in-out infinite both
+
+	.btn-content
+		@apply whitespace-nowrap overflow-hidden opacity-0 flex items-center pl-2 pr-4
+		transform: translateX(8px)
+		transition: opacity 0.25s ease 0.2s, transform 0.25s ease 0.2s
+		span
+			@apply text-white text-[13px] font-semibold tracking-wide
+		ul
+			@apply flex items-center gap-1 list-none m-0
+			li
+				a
+					@apply flex items-center justify-center w-9 h-9 rounded-full text-white no-underline
+					transition: background 0.2s
+					i
+						@apply text-[17px]
+						animation: none
+					&:hover
+						@apply bg-white/20
+
+@keyframes ring
+	0%, 70%, 100%
+		transform: rotate(0deg)
+	75%
+		transform: rotate(-12deg)
+	80%
+		transform: rotate(12deg)
+	85%
+		transform: rotate(-8deg)
+	90%
+		transform: rotate(8deg)
+	95%
+		transform: rotate(0deg)

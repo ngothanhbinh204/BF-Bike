@@ -1,0 +1,284 @@
+// ============================================================
+// SECTION: Product Detail — Summary
+// ============================================================
+
+.section-product-detail
+	@apply section-py
+
+.product-detail-layout
+	@apply flex gap-x-10 items-start
+	@screen -lg
+		@apply flex-col gap-y-8
+
+// ============================================================
+// Gallery (Left Column)
+// ============================================================
+
+.product-gallery
+	@apply flex flex-col flex-shrink-0 gap-y-4
+	@screen lg
+		width: calc(600/1920*100rem)
+		@apply sticky top-24
+	@screen xl
+		width: calc(720/1920*100rem)
+	@screen -lg
+		@apply w-full
+
+	// Top row: thumbs + main slider
+	&__top
+		@apply flex gap-x-4
+		@screen lg
+			display: block
+			position: relative
+			padding-left: calc(120/1920*100rem)
+		@screen -lg
+			@apply flex-col-reverse gap-x-0 gap-y-3
+
+	// Vertical thumbnail strip
+	&__thumbs
+		@apply flex-shrink-0 rem:w-[102px]
+		@screen lg
+			position: absolute
+			top: 0
+			left: 0
+			height: 100%
+		@screen -lg
+			@apply w-full flex-shrink
+
+		.swiper-slide
+			@apply cursor-pointer
+			@screen -lg
+				height: auto !important
+				// width: calc(80/1920*100rem) !important
+
+		.product-thumb
+			@apply w-full rounded-1 overflow-hidden border transition-300
+			border-color: theme('colors.utility.gray-200-line')
+			// @screen lg
+			// 	@apply h-full
+				// .img-ratio
+				// 	padding-top: 0
+				// 	height: 100%
+
+		.swiper-slide-thumb-active .product-thumb
+			@apply border-primary-1
+
+	&__slider-frame
+		@apply relative rounded-2
+		&::before
+			content: ''
+			@apply absolute inset-0 rounded-2 pointer-events-none
+			border: 1px solid theme('colors.utility.gray-200-line')
+			z-index: 2
+	// Main image slider
+	&__slider
+		@apply flex-1 min-w-0 relative
+		@screen -lg
+			@apply flex-none w-full
+
+		.swiper-slide
+			@apply relative block
+
+		.gallery-slide-link
+			@apply block cursor-zoom-in
+
+		.img-ratio
+			@apply rounded-2 overflow-hidden
+
+		.btn-gallery-prev,
+		.btn-gallery-next
+			@apply absolute top-1/2 -translate-y-1/2 z-10
+			@apply w-10 h-10 flex-center rounded-full border bg-white transition-300
+			@apply border-utility-gray-200-line
+			@apply text-utility-gray-700
+			&:hover
+				@apply bg-primary-1 border-primary-1 text-white
+
+		.btn-gallery-prev
+			@apply left-3
+
+		.btn-gallery-next
+			@apply right-3
+
+	// Quick product info below top area
+	&__info
+		@apply border-t pt-4
+		border-color: theme('colors.utility.gray-100')
+
+.product-info__label
+	@apply font-semibold mb-2
+	color: theme('colors.utility.gray-950-maintext')
+	font-size: clamp(13px, calc(14/1920*100rem), calc(14/1920*100rem))
+
+.product-info__list
+	@apply flex flex-col gap-y-1
+	li
+		@apply body-3
+		color: theme('colors.utility.gray-700')
+
+// ============================================================
+// Product Info (Right Column)
+// ============================================================
+
+.product-detail-info
+	@apply flex-1 min-w-0 lg:rem:max-w-[600px] space-y-5
+	.price
+		@apply font-gothic
+		.price-old
+			@apply font-primary
+			.price-old-vnd,
+			.price-old-usd
+				@apply line-through
+
+// Brand logo — ACF: product_brand
+.product-brand
+	@apply font-gothic font-black uppercase mb-2
+	font-size: clamp(16px, calc(22/1920*100rem), calc(22/1920*100rem))
+	line-height: 1
+	letter-spacing: 0.04em
+
+	.brand-bf
+		@apply text-primary-1
+
+	.brand-bike
+		@apply text-primary-2
+
+// WC: product_title
+.product_title
+	@apply font-gothic uppercase mb-5 heading-30 text-utility-gray-950-maintext
+
+// Badges — shared with ProductItem (badge-discount, badge-bestseller)
+.product-detail-badges
+	@apply flex-y-center gap-x-2 mb-4
+
+	// .badge-discount
+	// 	@apply inline-flex items-center justify-center px-2 py-1 rounded-sm font-bold text-white text-sm bg-primary-2
+
+	// .badge-bestseller
+	// 	@apply inline-flex items-center justify-center px-2 py-1 rounded-sm font-bold text-white text-sm uppercase bg-primary-1
+
+// Price — WC: .price
+.product-detail-price
+	@apply flex-y-center gap-x-4 mb-5 flex-wrap
+
+	.price-current
+		@apply font-bold
+		font-size: clamp(18px, calc(24/1920*100rem), calc(24/1920*100rem))
+		color: theme('colors.utility.gray-950-maintext')
+
+	.price-old
+		@apply text-sm
+		color: theme('colors.utility.gray-400')
+		.price-old-vnd,
+		.price-old-usd
+			@apply line-through
+	
+.divider
+	@apply h-[1px] w-full bg-utility-gray-200-line
+// Short description — WC: .woocommerce-product-details__short-description
+.product-detail-desc
+	@apply mb-5 space-y-5
+	p
+		@apply mb-3 leading-relaxed body-2 text-utility-gray-800
+// Advantages — ACF: product_advantages
+.product-advantages
+	@apply rounded-2 overflow-hidden mb-6
+
+	&__header
+		@apply bg-primary-1 text-white font-bold px-5 py-2.5 font-gothic body-20
+
+	&__body
+		@apply p-5
+		background: theme('colors.utility.gray-50')
+
+		ul
+			@apply flex flex-col gap-y-3 pl-3
+
+		li
+			@apply flex-y-center gap-x-2 body-2 font-semibold text-utility-gray-1515-maintext
+			&::before
+				content: "•"
+				@apply text-utility-gray-1515-maintext font-bold flex-shrink-0
+
+// CTA Buttons — WC: form.cart
+.product-actions
+	@apply flex-y-center gap-x-4 flex-wrap gap-y-3
+
+.btn-add-to-cart
+	@apply btn flex-y-center gap-x-3 px-6 py-3 rounded-1 font-semibold border transition-300 border-primary-1 text-primary-1
+	background: transparent
+	&:hover
+		@apply bg-primary-1 text-white
+
+.btn-buy-now
+	@apply flex-y-center gap-x-3 px-6 py-3 rounded-1 font-semibold bg-primary-1 text-white transition-300
+	font-size: clamp(13px, calc(15/1920*100rem), calc(15/1920*100rem))
+	&:hover
+		@apply opacity-90
+
+// ============================================================
+// SECTION: Video Hướng dẫn Lắp đặt
+// ============================================================
+
+.section-video-guide
+	@apply section-py
+	background: theme('colors.utility.gray-50')
+
+	.section-title
+		@apply mb-8
+
+.video-guide-outer
+	@apply relative
+	max-width: calc(1170/1920*100rem)
+	margin: 0 auto
+	// padding: 0 calc(56/1920*100rem)
+	@screen -lg
+		@apply container
+
+	// .btn-video-prev,
+	// .btn-video-next
+	// 	@apply absolute top-1/2 -translate-y-1/2 z-10
+
+	// .btn-video-prev
+	// 	@apply left-0
+
+	// .btn-video-next
+	// 	@apply right-0
+
+.video-guide-item
+	@apply block rounded-2 overflow-hidden
+
+	.img-ratio
+		@apply rounded-2 overflow-hidden
+
+// ============================================================
+// SECTION: Sản phẩm Liên quan
+// WC: .related.products
+// ============================================================
+
+.section-related-products
+	@apply section-py
+
+	.section-title
+		@apply mb-8
+
+.related-products-wrap
+	@apply relative
+
+	.swiper-related
+		@apply overflow-hidden
+
+	.btn-related-prev,
+	.btn-related-next
+		@apply absolute top-1/2 -translate-y-1/2 z-10
+		margin-top: calc(-24/1920*100rem)
+
+	.btn-related-prev
+		left: calc(-56/1920*100rem)
+		@screen -xl
+			@apply hidden
+
+	.btn-related-next
+		right: calc(-56/1920*100rem)
+		@screen -xl
+			@apply hidden

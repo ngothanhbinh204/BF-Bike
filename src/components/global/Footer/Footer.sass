@@ -1,0 +1,130 @@
+footer.footer
+	@apply relative overflow-hidden section-py rem:pb-[135px]
+	background-color: #151515
+
+	// Background image layer
+	.bg-footer 
+		@apply absolute-full z-0 bg-cover bg-center bg-no-repeat
+		img
+			@apply block w-full h-full object-cover
+	.footer-body
+		@apply relative bg-cover bg-center bg-no-repeat
+		// &::before
+		// 	@apply absolute-full z-1
+		// 	content: ""
+		// 	background: linear-gradient(90deg, rgba(0,0,0,0.82) 30%, rgba(21,21,21,0.55) 100%)
+
+		.container
+			@apply relative z-2
+
+	// Main row
+	// .footer-row
+	// 	@apply py-12 gap-y-10
+	// 	@screen lg
+	// 		@apply py-16
+
+	// ── Left column ──────────────────────────────────────────
+	.footer-left
+		@apply flex flex-col space-y-5
+
+	.footer-logo
+		img
+			@apply h-7.5 w-auto
+
+	.footer-tagline
+		@apply text-white font-bold body-1
+
+	.footer-partner
+		@apply flex-y-center gap-x-15
+		.partner-label
+			@apply text-white body-1 leading-1.4 font-gothic font-semibold rem:max-w-[161px]
+		.partner-logo-box
+			@apply block overflow-hidden transition-all p-2.5 bg-white
+			img
+				@apply h-10 w-auto
+
+	.footer-socials
+		@apply flex flex-col gap-y-4 
+		@apply mt-15 #{!important}
+		a
+			@apply flex-y-center gap-x-3 text-white body-1 font-semibold transition-all font-gothic
+			&:hover
+				@apply text-primary-1
+				.icon
+					@apply border-primary-1 text-primary-1
+		.icon
+			@apply flex-center sq-10 rounded-full border border-white transition-all flex-shrink-0 text-lg
+
+	// ── Right column ─────────────────────────────────────────
+	.footer-right
+		@apply text-left flex flex-col gap-6 lg:text-right lg:gap-y-10
+
+	.info-title
+		@apply text-white font-bold text-xl mb-1
+
+	.info-text
+		@apply text-white body-1
+		strong
+			@apply font-semibold
+		a
+			@apply text-white underline transition-all
+			&:hover
+				@apply text-primary-1
+
+	.info-list
+		@apply flex flex-col gap-y-1 mt-1
+		li
+			@apply text-white body-1
+		strong
+			@apply font-semibold
+
+	.info-email
+		@apply text-white body-1 underline transition-all block mt-1
+		&:hover
+			@apply text-primary-1
+
+	// ── Bottom bar ───────────────────────────────────────────
+	.footer-bottom
+		@apply flex-between-center pt-9 flex-wrap gap-y-3
+
+	.footer-copyright
+		@apply text-white body-4 opacity-60
+
+	.footer-terms
+		ul
+			@apply flex-y-center gap-x-8
+		li
+			@apply relative
+			&:not(:last-child)::after
+				@apply absolute body-4 text-white opacity-25 top-1/2 -translate-y-1/2
+				content: "|"
+				right: calc(-16/1920*100rem)
+		a
+			@apply text-white body-3 transition-all
+			&:hover
+				@apply text-primary-1
+
+	// ── Brand text ───────────────────────────────────────────
+	.footer-brand
+		@apply flex-center overflow-hidden absolute left-0 right-0 bottom-0 pointer-events-none translate-y-8
+		container-type: inline-size
+
+	.brand-text
+		@apply font-gothic font-bold whitespace-nowrap leading-[1.15] block tracking-[-5.6px]
+		font-size: 7.3cqw
+		opacity: 0.4
+		background: linear-gradient(90deg, rgba(255,255,255,0.20) 0%, #FFF 25%, rgba(255,255,255,0.40) 50%, #FFF 75%, rgba(255,255,255,0.20) 100%)
+		background-clip: text
+		-webkit-background-clip: text
+		-webkit-text-fill-color: transparent
+
+.info-list
+	@apply flex flex-col gap-y-1 mt-1
+	p
+		@apply text-white body-1
+		strong
+			@apply font-semibold
+	li
+		@apply text-white body-1
+	strong
+		@apply font-semibold

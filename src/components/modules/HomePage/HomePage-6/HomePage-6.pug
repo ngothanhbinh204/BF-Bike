@@ -1,0 +1,41 @@
+section.section-help
+	.container
+		h2.section-title(data-ripple-text data-ripple-text-types="chars" data-ripple-text-delay="0.05") BẠN CẦN TRỢ GIÚP?
+
+		//- ACF repeater: help_items — each item: title, desc, icon (SVG URL)
+		.help-list(data-stagger data-stagger-delay="0.12" data-stagger-duration="0.65")
+			a.help-item(href="#!" data-stagger-item)
+				.help-item__top
+					h3.help-item__title
+						| Bảo hành
+						br
+						| chính hãng
+					img.help-item__icon(src="./img/baohanh_icon.svg" alt="Bảo hành chính hãng")
+				p.help-item__desc Cam kết 1 đổi 1 nhanh chóng nếu sản phẩm lỗi
+
+			a.help-item(href="#!" data-stagger-item)
+				.help-item__top
+					h3.help-item__title
+						| Hỗ trợ
+						br
+						strong lắp đặt
+					img.help-item__icon(src="./img/baohanh_icon.svg" alt="Hỗ trợ lắp đặt")
+				p.help-item__desc Xem video chi tiết để được hỗ trợ lắp đặt trực tiếp tại nhà
+
+			a.help-item(href="#!" data-stagger-item)
+				.help-item__top
+					h3.help-item__title
+						| Chăm sóc
+						br
+						| khách hàng 24/7
+					img.help-item__icon(src="./img/baohanh_icon.svg" alt="Chăm sóc khách hàng 24/7")
+				p.help-item__desc Đội ngũ CSKH luôn sẵn sàng trên Zalo &amp; Hotline 24/7 để hỗ trợ bạn
+
+			a.help-item(href="#!" data-stagger-item)
+				.help-item__top
+					h3.help-item__title
+						| Giao hàng
+						br
+						| toàn quốc
+					img.help-item__icon(src="./img/baohanh_icon.svg" alt="Giao hàng toàn quốc")
+				p.help-item__desc Đóng gói cẩn thận, đảm bảo sản phẩm an toàn và đúng thời gian

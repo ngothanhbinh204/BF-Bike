@@ -1,0 +1,121 @@
+section.section-support
+	.container
+		.support-layout
+
+			//- ─── Sidebar ────────────────────────────────────────────────────
+			//- WP: wp_nav_menu(['theme_location' => 'support-menu', 'container' => false])
+			aside.support-sidebar
+				.support-sidebar__header
+					//- WP: có thể hardcode hoặc dùng ACF option cho tiêu đề sidebar
+					h2 Hỗ trợ khách hàng
+
+				nav.support-nav(aria-label="Hỗ trợ khách hàng")
+					ul.support-nav__list
+						//- WP: foreach wp_nav_menu items — current-menu-item added automatically
+						li.support-nav__item.current-menu-item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-comment-question
+								span.support-nav__text Chính sách bán hàng
+
+						li.support-nav__item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-arrow-right-arrow-left
+								span.support-nav__text Chính sách giao nhận và đổi trả
+
+						li.support-nav__item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-shield-halved
+								span.support-nav__text Điều kiện bảo mật
+
+						li.support-nav__item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-circle-question
+								span.support-nav__text FAQs
+
+						li.support-nav__item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-money-bill-wave
+								span.support-nav__text Hướng dẫn thanh toán
+
+						li.support-nav__item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-mobile-screen
+								span.support-nav__text Hướng dẫn thanh toán trên VNPAY trên website
+
+						li.support-nav__item
+							a.support-nav__link(href="#!")
+								span.support-nav__icon
+									i.fa-regular.fa-box
+								span.support-nav__text Thông tin vận chuyển và giao nhận
+
+			//- ─── Content ────────────────────────────────────────────────────
+			//- WP: while(have_posts()) the_content() — .entry-content giữ cho WP render đúng
+			.support-content
+
+				//- ── Article: Chính sách bán hàng (text content variant) ────
+				article.support-article
+					//- WP: the_title()
+					h1.support-article__title Chính sách bán hàng
+					.support-article__divider
+
+					//- WP: the_content() — giữ class entry-content để WP block/classic editor hoạt động
+					.support-article__body.entry-content
+						p visante có dịch vụ giao hàng tận nơi trên toàn quốc, áp dụng cho khách mua hàng trên Website, Fanpage và gọi điện thoại vào Hotline của visante. Đơn hàng sẽ được chuyển phát đến địa chỉ khách hàng cung cấp thông qua đơn vị vận chuyển trung gian là GIAO HÀNG TIẾT KIỆM hoặc VIETTEL POST. Đặc biệt, thông tin hóa đơn dán bên ngoài kiện hàng luôn luôn có logo thương hiệu visante để nhận biết các sản phẩm là chính hãng.
+
+						h2 1. Chính sách giá
+
+						p Giá sản phẩm niêm yết tại Website là giá đã bao gồm thuế theo quy định pháp luật hiện hành, các chi phí phát sinh khác liên quan đến việc mua hàng được xác nhận qua Hotline hoặc Email của visante và được sự chấp thuận của khách hàng trong quá trình xác nhận đơn đặt hàng, giao nhận hàng hoá.
+
+						h2 2. Phí vận chuyển:
+
+						p a. Với hóa đơn từ 499.000 VNĐ: miễn phí vận chuyển toàn quốc.
+
+						p b. Với hóa đơn dưới 499.000 VNĐ: phí vận chuyển mặc định là 30.000 VNĐ áp dụng toàn quốc.
+
+						h2 3. Thời gian giao hàng:
+
+						p a. Đơn hàng nội thành HN &amp; TP.HCM: Thời gian giao hàng là 2-3 ngày sau khi đặt hàng.
+
+						p b. Đơn hàng ở ngoại thành HN &amp; TP.HCM và các tỉnh thành khác: Thời gian là 2-5 ngày đối với khu vực trung tâm tỉnh/thành phố và 5-6 ngày đối với khu vực huyện, xã, thị trấn...
+
+						p c. Tuy nhiên, vẫn có những giới hạn và sự chậm trễ do nguyên nhân khách quan như Lễ, Tết, địa chỉ nhận hàng khó tìm, sự chậm trễ từ dịch vụ chuyển phát,... visante mong quý khách thông cảm vì những lý do ngoài sự chi phối của chúng tôi.
+
+				//- ── Article: FAQs (accordion variant) ─────────────────────
+				//- WP: get_field('faq_items') as ACF repeater — each item: question (text), answer (textarea)
+				article.support-article.support-article--faqs
+					h1.support-article__title FAQs
+					.support-article__divider
+
+					//- data-active-index="0" → item đầu tiên mở mặc định
+					//- data-multiple-open → cho phép mở nhiều item cùng lúc (bỏ attribute nếu không dùng)
+					.accordion-list(data-toggle="accordion" data-active-index="0")
+
+						//- WP: foreach get_field('faq_items') as $i => $faq
+						-
+							var faqs = [
+								{ q: 'Cần sử dụng dầu dưỡng giảm rụng BF Bike hàng ngày không?', a: 'Tùy vào tình trạng da đầu và tóc của bạn có thể gội hàng ngày, cách ngày 1-2 ngày. Tuy nhiên nên sử dụng sản phẩm liên tục trong thời gian dài để thấy hiệu quả.' },
+								{ q: 'Ngoài xịt mọc tóc, có cách nào để giúp tóc mọc nhanh hơn nữa không?', a: 'Bạn có thể kết hợp với các sản phẩm chăm sóc tóc khác, chế độ ăn uống đầy đủ dinh dưỡng và giảm stress.' },
+								{ q: 'Xịt mọc tóc BF Bike có chứa hương tổng hợp không?', a: 'Sản phẩm sử dụng hương liệu tự nhiên, không chứa hương tổng hợp có hại.' },
+								{ q: 'Xịt mọc tóc có gây bết dính hay làm nặng tóc không?', a: 'Không, sản phẩm có kết cấu nhẹ, thẩm thấu nhanh và không để lại cặn hay gây bết dính.' },
+								{ q: 'Xịt mọc tóc BF Bike có giúp giảm tình trạng tóc bạc sớm không?', a: 'Sản phẩm chủ yếu kích thích mọc tóc và giảm rụng, không có tác dụng điều trị tóc bạc.' },
+								{ q: 'Có cần phải gội đầu trước khi sử dụng xịt mọc tóc BF Bike không?', a: 'Khuyến nghị sử dụng sau khi gội đầu sạch để sản phẩm thẩm thấu hiệu quả hơn.' },
+								{ q: 'Có phù hợp với da đầu nhạy cảm không?', a: 'Sản phẩm được kiểm tra da liễu, phù hợp với hầu hết các loại da đầu kể cả da nhạy cảm.' },
+								{ q: 'Có cần lắc đều xịt mọc tóc BF Bike trước khi sử dụng không?', a: 'Nên lắc đều trước khi dùng để đảm bảo các thành phần được phân tán đồng đều.' },
+								{ q: 'Có cần sử dụng xịt mọc tóc liên tục trong thời gian dài để duy trì kết quả không?', a: 'Để có kết quả bền vững, khuyến nghị sử dụng liên tục ít nhất 3 tháng.' }
+							]
+						each faq, i in faqs
+							.accordion-item
+								button.accordion-trigger(type="button")
+									span.accordion-trigger__num= (i + 1 < 10 ? '0' : '') + (i + 1)
+									span.accordion-trigger__text= faq.q
+									span.accordion-trigger__icon
+										i.fa-regular.fa-chevron-down
+								.accordion-content
+									.accordion-content__inner
+										p= faq.a

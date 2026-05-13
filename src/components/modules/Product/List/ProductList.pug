@@ -1,0 +1,181 @@
+section.section-product-list
+	.container
+		.product-layout
+
+			//- ============================================================
+			//- SIDEBAR — WP: each .filter-group maps to facetwp_display('facet', 'slug')
+			//- ============================================================
+			aside.product-sidebar
+
+				//- Filter: Theo thương hiệu — FacetWP facet slug: brand
+				.filter-group(data-filter-group)
+					button.filter-group__toggle(type="button" aria-expanded="true")
+						span Theo thương hiệu
+						i.fa-regular.fa-chevron-down
+					.filter-group__body
+						//- facetwp_display('facet', 'brand') — renders checkboxes below
+						ul.filter-checklist
+							li
+								label.filter-check
+									input(type="checkbox" name="brand" value="vinfast")
+									span.checkmark
+									span.check-label Vinfast
+							li
+								label.filter-check
+									input(type="checkbox" name="brand" value="yamaha")
+									span.checkmark
+									span.check-label Yamaha
+
+				//- Filter: Theo dòng xe — FacetWP facet slug: vehicle_model
+				.filter-group(data-filter-group)
+					button.filter-group__toggle(type="button" aria-expanded="true")
+						span Theo dòng xe
+						i.fa-regular.fa-chevron-down
+					.filter-group__body
+						//- facetwp_display('facet', 'vehicle_model')
+						ul.filter-checklist
+							li
+								label.filter-check
+									input(type="checkbox" name="model" value="feliz")
+									span.checkmark
+									span.check-label Feliz
+							li
+								label.filter-check
+									input(type="checkbox" name="model" value="evo")
+									span.checkmark
+									span.check-label Evo
+							li
+								label.filter-check
+									input(type="checkbox" name="model" value="vento")
+									span.checkmark
+									span.check-label Vento
+
+				//- Filter: Theo giá — FacetWP facet slug: price_range
+				.filter-group(data-filter-group)
+					button.filter-group__toggle(type="button" aria-expanded="true")
+						span Theo giá
+						i.fa-regular.fa-chevron-down
+					.filter-group__body
+						//- facetwp_display('facet', 'price_range') — renders range below
+						.filter-price
+							input.filter-price__range(type="range" min="0" max="200000000" value="200000000" step="1000000")
+							.filter-price__inputs
+								.filter-price__val.is-min 0 đ
+								.filter-price__val.is-max 200,000,000 đ
+
+			//- ============================================================
+			//- MAIN CONTENT
+			//- ============================================================
+			.product-main
+
+				//- Head: category name + sort dropdown
+				.product-head
+					//- WP: the_archive_title() or get_term_name()
+					h1.product-heading SẢN PHẨM
+
+					//- Sort — FacetWP: facetwp_display('sort', '') or WC orderby dropdown
+					.product-sort
+						span.product-sort__label Sắp xếp
+						.sort-dropdown(data-sort-dropdown)
+							button.sort-dropdown__toggle(type="button" aria-expanded="false")
+								span.sort-dropdown__current Tất cả
+								i.fa-regular.fa-chevron-down
+							ul.sort-dropdown__menu(role="listbox")
+								li.sort-dropdown__item.is-selected(data-value="" role="option") Tất cả
+								li.sort-dropdown__item(data-value="price_asc" role="option") Giá tăng dần
+								li.sort-dropdown__item(data-value="price_desc" role="option") Giá giảm dần
+								li.sort-dropdown__item(data-value="newest" role="option") Mới nhất
+								li.sort-dropdown__item(data-value="bestseller" role="option") Bán chạy
+
+				//- Product grid — WP: facetwp_display('template', 'products') wraps this
+				.facetwp-template
+					.product-grid
+						.product-grid__item
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: 'Hốc đựng đồ đôi Evo',
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+						.product-grid__item
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: 'Rỗ xe Feliz',
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+						.product-grid__item
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: 'Hốc đựng đồ đôi Feliz',
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+						.product-grid__item
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: 'Hốc đựng đồ đôi Evo',
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+						.product-grid__item
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: 'Rỗ xe Feliz',
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+						.product-grid__item
+							+ProductItem({
+								href: '#!',
+								image: './img/img-product.png',
+								name: 'Hốc đựng đồ đôi Feliz',
+								discount: '-20%',
+								isBestseller: true,
+								priceVND: '1.250.000đ',
+								priceUSD: '56$',
+								oldPriceVND: '1.500.000đ',
+								oldPriceUSD: '60$',
+								specs: ['Nhà sản xuất: Vingroup', 'Mã sản phẩm: AT0016070', 'Made in Viet Nam']
+							})
+
+				//- Pagination — WP: facetwp_display('pager') renders inside .facetwp-pager
+				.facetwp-pager
+					nav.product-pagination(aria-label="Phân trang sản phẩm")
+						ul
+							li
+								a.page-btn.is-active(href="#!" aria-current="page") 1
+							li
+								a.page-btn(href="#!") 2
+							li
+								a.page-btn(href="#!") 3

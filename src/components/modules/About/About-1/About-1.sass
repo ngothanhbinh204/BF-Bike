@@ -1,0 +1,42 @@
+.section-about-intro
+	@apply relative overflow-hidden section-my
+	.container-full
+		@apply flex flex-col gap-y-10 lg:flex-row items-center gap-x-20
+
+	.about-image
+		@apply relative h-full pointer-events-none rem:min-h-[676px] lg:rem:min-w-[600px] xl:rem:min-w-[660px]
+		@screen -lg
+			@apply relative h-auto ml-auto
+			width: 100%
+			max-width: 90%
+		img
+			@apply absolute-full w-full h-full object-cover
+			border-radius: calc(100/1920*100rem) 0 0 calc(100/1920*100rem)
+			// @screen -lg
+			// 	border-radius: calc(100/1920*100rem)
+
+	.about-content
+		@apply w-full -md:px-container
+		@apply section-pl
+
+	.about-label
+		@apply body-3 font-semibold mb-3 text-primary-1
+
+	.about-title
+		@apply font-gothic uppercase mb-8 section-title
+		@apply text-left #{!important}
+		// font-size: clamp(22px, calc(40/1920*100rem), calc(40/1920*100rem))
+		// line-height: 1.2
+		// color: theme('colors.utility.gray-950-maintext')
+		// strong
+		// 	@apply text-primary-1 
+
+	.about-body
+		@apply grid gap-x-8 lg:rem:gap-x-[50px] gap-y-4
+		@screen lg
+			@apply grid-cols-2
+
+		&__col
+			@apply flex flex-col space-y-5
+			p
+				@apply body-2 text-utility-gray-600-secondarytext

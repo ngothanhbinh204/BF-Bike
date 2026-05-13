@@ -1,0 +1,42 @@
+.section-mission
+	@apply section-py
+
+	.mission-inner
+		@apply flex flex-col gap-y-8 items-center
+		@screen xl
+			@apply flex-row items-center gap-x-20 xl:rem:gap-x-[120px]
+
+	.mission-image
+		@apply flex-shrink-0 w-full
+		@screen lg
+			width: rr(678px)
+		.img-ratio
+			@apply rounded-3 overflow-hidden
+			img
+				@apply absolute-full w-full h-full object-cover
+
+	.mission-content
+		@apply flex flex-col justify-center flex-1 space-y-5
+
+		h2.section-title
+			@apply text-left #{!important}
+
+	.mission-subtitle
+		@apply body-1 text-utility-gray-1515-maintext
+
+	.mission-list
+		@apply flex flex-col gap-y-5
+
+	.mission-item
+		@apply flex items-center gap-x-4 p-2 px-2.5 rounded-2 border border-transparent
+		background: theme('colors.utility.gray-50')
+		transition: border-color .3s ease, box-shadow .3s ease
+		&:hover
+			@apply border border-primary-1
+			box-shadow: 0 2px 12px rgba(215, 25, 32, 0.08)
+
+		&__num
+			@apply flex-shrink-0 bg-white text-utility-gray-1515-maintext font-bold py-3 px-2.5 body-20 rem:min-w-[52px] rem:min-h-[52px] flex-center rounded-1
+
+		&__text
+			@apply body-20 text-utility-gray-1515-maintext

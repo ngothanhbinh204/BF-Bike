@@ -1,0 +1,201 @@
+// ============================================================
+// Product List Page
+// ============================================================
+.section-product-list
+	@apply section-py
+
+	.product-layout
+		@apply flex gap-x-5 items-start
+		@screen -lg
+			@apply flex-col gap-y-8
+
+
+// ============================================================
+// Sidebar
+// ============================================================
+.product-sidebar
+	@apply flex-shrink-0 w-full
+	@screen lg
+		width: calc(280/1920*100rem)
+		@apply sticky top-20 self-start
+	.filter-group.filter-item
+		.filter-group__body
+			&.filter-item-content
+				.facetwp-checkbox
+					@apply flex flex-row gap-5 text-utility-gray-1515-maintext body-2 font-normal
+					&::before
+						@apply w-4.5 h-4.5 rounded-sm border border-utility-gray-300 flex-shrink-0
+						content: '\f0c8'
+					&.checked::before
+						@apply bg-primary-1 border-primary-1
+						box-shadow: 0 0 0 3px white, 0 0 0 4px bg-primary-1
+						content: '\f14a'
+
+	.filter-group
+		@apply pb-5 mb-5 border-b border-utility-gray-200-line border-solid
+		&:last-child
+			@apply border-0 mb-0 pb-0
+
+	.filter-group__toggle
+		@apply w-full flex-between-center cursor-pointer select-none
+		span
+			@apply font-gothic font-bold body-20 text-utility-gray-950-maintext
+		i
+			@apply transition-300 body-20 flex-shrink-0 text-utility-gray-950-maintext
+		&[aria-expanded="false"]
+			i
+				transform: rotate(-90deg)
+
+	.filter-group__body
+		@apply mt-4 overflow-hidden
+		transition: max-height .3s ease, opacity .3s ease
+		&.is-collapsed
+			@apply opacity-0
+			max-height: 0 !important
+
+	.filter-checklist
+		@apply flex flex-col gap-y-3
+
+	.filter-check
+		@apply flex-y-center gap-x-3 cursor-pointer select-none body-3
+		color: theme('colors.utility.gray-700')
+		input[type="checkbox"]
+			@apply absolute opacity-0 w-0 h-0
+		&:hover .checkmark
+			@apply border-primary-1
+		input:checked ~ .checkmark
+			@apply bg-primary-1 border-primary-1
+			&::after
+				@apply block
+
+	.checkmark
+		@apply relative flex-shrink-0 inline-block w-4.5 h-4.5 rounded-sm transition-300
+		border: 1.5px solid theme('colors.utility.gray-300')
+		&::after
+			content: ''
+			@apply hidden absolute
+			left: 4px
+			top: 1px
+			width: 5px
+			height: 9px
+			border: solid white
+			border-width: 0 2px 2px 0
+			transform: rotate(45deg)
+
+	//- Price range filter
+	.filter-price
+		@apply flex flex-col gap-y-3
+
+		&__range
+			@apply w-full cursor-pointer appearance-none h-1 rounded-full outline-none
+			background: linear-gradient(to right, bg-primary-1 0%, bg-primary-1 70%, theme('colors.utility.gray-200-line') 70%)
+			&::-webkit-slider-thumb
+				@apply appearance-none w-4.5 h-4.5 rounded-full bg-primary-1 cursor-pointer
+				box-shadow: 0 0 0 3px white, 0 0 0 4px bg-primary-1
+			&::-moz-range-thumb
+				@apply w-4.5 h-4.5 rounded-full bg-primary-1 cursor-pointer border-0
+
+		&__inputs
+			@apply flex flex-col gap-y-2
+
+		&__val
+			@apply body-3 px-3 py-2 rounded-1 select-none
+			background: theme('colors.utility.gray-50')
+			color: theme('colors.utility.gray-600-secondarytext')
+			&.is-max
+				@apply text-primary-1 font-semibold
+
+
+
+.product-main
+	@apply flex-1 min-w-0 border-l border-utility-gray-200-line pl-10 w-full
+
+	.product-head
+		@apply flex-between-center gap-x-4 mb-8 flex-wrap gap-y-4
+
+	.product-heading
+		@apply font-gothic font-bold uppercase section-title
+
+	.product-sort
+		@apply flex-y-center gap-x-3 flex-shrink-0
+
+		&__label
+			@apply body-3
+			color: theme('colors.utility.gray-600-secondarytext')
+
+	//- Custom sort dropdown
+	.sort-dropdown
+		@apply relative
+
+		&__toggle
+			@apply flex-y-center gap-x-10 cursor-pointer select-none transition-300
+			@apply body-3 font-medium px-4 py-2.5 rounded-1 bg-white
+			@apply border border-utility-gray-200-line
+			min-width: calc(160/1920*100rem)
+			color: theme('colors.utility.gray-950-maintext')
+			&[aria-expanded="true"]
+				@apply border-primary-1
+				i
+					transform: rotate(180deg)
+			i
+				@apply transition-300 text-sm ml-auto
+				color: theme('colors.utility.gray-600-secondarytext')
+
+		&__menu
+			@apply absolute top-full right-0 z-10 mt-1 w-full bg-white rounded-1
+			@apply opacity-0 invisible transition-300 pointer-events-none
+			box-shadow: 0 4px 16px rgba(0,0,0,0.10)
+			border: 1px solid theme('colors.utility.gray-200-line')
+			&.is-open
+				@apply opacity-100 visible pointer-events-auto
+
+		&__item
+			@apply body-3 px-4 py-2.5 cursor-pointer transition-300
+			color: theme('colors.utility.gray-700')
+			&:hover
+				@apply bg-utility-gray-50 text-primary-1
+			&.is-selected
+				@apply font-semibold text-primary-1
+			
+	//- Product grid — 3 cols desktop, 2 tablet, 1 mobile
+	.product-grid
+		@apply grid gap-10
+		grid-template-columns: repeat(3, 1fr)
+		@screen -lg
+			grid-template-columns: repeat(2, 1fr)
+		@screen -md
+			grid-template-columns: 1fr
+
+		&__item
+			@apply flex
+		.product-item
+			@apply w-full
+
+	//- Pagination
+	.product-pagination
+		@apply flex-center mt-10
+		ul
+			@apply flex-center gap-x-2
+
+	.page-btn
+		@apply flex-center sq-12 rounded-1 font-gothic body-2 font-semibold transition-300 select-none border border-transparent text-utility-gray-1515-maintext
+		@apply tracking-[-0.64px] bg-utility-gray-100
+		&:hover
+			@apply border-primary-1 text-primary-1
+		&.is-active
+			@apply bg-primary-1 border-primary-1 text-white
+
+
+// ============================================================
+// FacetWP overrides — WP plugin renders its own markup
+// Map styles to FacetWP default classes
+// ============================================================
+.facetwp-template
+	@apply min-h-[200px]
+
+.facetwp-pager
+	.fwp-page
+		@extend .page-btn
+		display: inline-flex !important
+	.fwp-page.active
+		@apply bg-primary-1 border-primary-1 text-white

@@ -1,0 +1,28 @@
+section.section-mission
+	.container
+		.mission-inner
+			//- Left col — image box | ACF: mission_image
+			.mission-image(data-aos="fade-right" data-aos-duration="1000")
+				.img-ratio(class="ratio:pt-[470_678]")
+					+PugImg()
+
+			//- Right col — title + mission list
+			.mission-content
+				h2.section-title(data-ripple-text data-ripple-text-types="words" data-ripple-text-delay="0.07")
+					strong SỨ MỆNH
+					|  CHÚNG TÔI
+
+				//- ACF: mission_subtitle
+				p.mission-subtitle(data-aos="fade-up" data-aos-delay="100") Là thương hiệu sản xuất phụ kiện giúp:
+
+				//- ACF repeater: mission_items — each item: text
+				ul.mission-list(data-stagger data-stagger-delay="0.13" data-stagger-duration="0.6")
+					li.mission-item(data-stagger-item)
+						span.mission-item__num 01
+						p.mission-item__text Tăng thêm tiện ích cho xe
+					li.mission-item(data-stagger-item)
+						span.mission-item__num 02
+						p.mission-item__text Nâng cao độ bền và hiệu quả sử dụng của các món phụ kiện
+					li.mission-item(data-stagger-item)
+						span.mission-item__num 03
+						p.mission-item__text Mang đến trải nghiệm di chuyển tiện lợi và đáng tin cậy hơn cho người dùng xe máy điện

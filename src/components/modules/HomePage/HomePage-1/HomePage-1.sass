@@ -1,0 +1,81 @@
+.section-home-banner
+	@apply relative w-full
+
+	// ── Ratio container — img-ratio + ratio:pt-[960_1920] = 50% ─
+	.banner-ratio
+		@apply relative img-ratio ratio:pt-[150%] lg:ratio:pt-[960_1920]
+
+	// ── Swiper fills ratio container ─────────────────────────
+	.swiper
+		@apply absolute-full
+
+	.swiper-slide
+		@apply relative overflow-hidden
+		// Slide image — lozad will load data-src
+		> img
+			@apply absolute-full w-full h-full object-cover
+		// Gradient overlay for readability
+		&::after
+			@apply absolute-full z-1
+			content: ""
+			background: linear-gradient(to top, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.20) 45%, transparent 80%)
+
+	// ── Slide content (title) ────────────────────────────
+	.slide-content
+		@apply absolute left-0 bottom-0 w-full z-2 pb-28
+		.container
+			@apply max-w-full px-10 lg:px-15 xl:px-20
+
+	.slide-title
+		@apply text-white font-gothic font-bold uppercase leading-1.25
+		font-size: clamp(24px, rr(40px), rr(40px))
+		text-shadow: 0 4px 4px rgba(0,0,0,0.25)
+		max-width: calc(824/1920*100rem)
+		@screen -md
+			font-size: 24px
+			max-width: 85%
+
+	// ── Navigation arrows ────────────────────────────────
+	// .btn-swiper-prev,
+	// .btn-swiper-next
+	// 	@apply absolute top-1/2 -translate-y-1/2 z-3
+	// 	@apply flex-center w-9 h-9 text-white transition-300
+	// 	text-shadow: 0 2px 6px rgba(0,0,0,0.35)
+	// 	font-size: calc(22/1920*100rem)
+	// 	@screen -md
+	// 		@apply text-lg
+	// 	&:hover
+	// 		@apply text-primary-1
+
+	// .btn-swiper-prev
+	// 	@apply left-4
+
+	// .btn-swiper-next
+	// 	@apply right-4
+
+	// ── Controls bar: pause + progress track ───────────────
+	.banner-controls
+		@apply absolute bottom-0 left-0 w-full z-3 flex-y-center pb-10 px-10 lg:px-15 xl:px-20
+
+	// Play/Pause button — small circle, left-aligned
+	.banner-play-pause
+		@apply flex-center flex-shrink-0 text-white transition-300 cursor-pointer rem:text-[22px] sq-8
+		border-radius: 50%
+		background: rgba(255,255,255,0.18)
+		border: 1px solid rgba(255,255,255,0.35)
+		backdrop-filter: blur(4px)
+		&:hover
+			background: rgba(255,255,255,0.32)
+
+	// Progress track: full remaining width, 2px line
+	.banner-progress-track
+		@apply relative flex-1 overflow-hidden h-1 rounded-4
+		background: rgba(255,255,255,0.28)
+		margin: 0 calc(14/1920*100rem)
+		@screen -md
+			margin: 0 10px
+
+	// White fill — animated by JS via CSS transition
+	.banner-progress-fill
+		@apply absolute top-0 left-0 h-full bg-white
+		width: 0%

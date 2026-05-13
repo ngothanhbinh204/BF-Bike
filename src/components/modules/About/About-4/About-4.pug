@@ -1,0 +1,33 @@
+section.section-about-5(data-bg-options='{"src":"./img/bg_banner_home.png"}')
+	.wrap-padding
+		.container
+			h2.section-title.white.left(data-ripple-text data-ripple-text-types="words" data-ripple-text-delay="0.08") GIÁ TRỊ CỐT LÕI
+			.block-grid(data-stagger data-stagger-delay="0.18" data-stagger-duration="0.8" data-stagger-dir="bottom")
+				-
+					const items = [
+						{
+							title: "Win – Khách hàng",
+							desc: "Chúng tôi luôn đặt lợi ích và sự hài lòng của khách hàng lên hàng đầu. Không chỉ cung cấp sản phẩm chất lượng, chúngtôi còn tận tâm phục vụ, hỗ trợ và xây dựng mối quan hệ lâu dài,đáng tin cậy."
+						},
+						{
+							title: "Win – Đối tác",
+							desc: "Chúng tôi luôn đồng hành và hỗ trợ tối đa về kỹ thuật,dịch vụ, truyền thông, giúp đối tác phát triển bền vững. Bằng sự hợp tác chặt chẽ, chúng tôi tin rằng sự thành công của đối tác cũng chính là thành công của B-Factory."
+						},
+						{
+							title: "Win – Đội ngũ cán bộ công nhân viên",
+							desc: "Với đội ngũ nhân sự, chúng tôi tạo điều kiện để họ phát triển toàn diện, nâng cao kỹ năng chuyên môn và cải thiện đời sống. Không chỉ mở rộng sản xuất, chúng tôi còn góp phần tạo công ăn việc làm ổn định, nâng cao chất lượng cuộc sống và đóng góp tích cực vào sự phát triển chung của xã hội."
+						}
+					]
+				each item, i in items
+					.item-grid(data-height-options='{"source": "child", "var": "--height-desc"}' data-stagger-item)
+						.child
+							.item-grid-number
+								span= `0${i+1}`
+							.item-grid-main
+								//- Title always visible (outside hidden desc block)
+								.item-grid-title
+									span= item.title
+								//- Description hidden until hover, measured for translateY
+								.item-grid-desc(data-height-child)
+									.item-grid-desc-inner
+										p= item.desc
